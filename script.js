@@ -188,7 +188,7 @@ class CardMatchingGame {
     }
   }
 
-  draw() {
+  drawT() {
     background(220);
     this.drawCards();
 
