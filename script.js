@@ -241,16 +241,3 @@ class CardMatchingGame {
     }
   }
 }
-
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-  game = new CardMatchingGame();
-}
-
-function draw() {
-  game.draw();
-}
-
-function mousePressed() {
-  game.handleMousePressed();
-}
