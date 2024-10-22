@@ -144,6 +144,13 @@ class CardMatchingGame {
     this.selectedCards = [];
     this.matches = 0;
 
+    this.shapeImages = {};
+
+    this.shapeImages["circle"] = loadImage('assets/circle.png');
+    this.shapeImages["square"] = loadImage('assets/square.png');
+    this.shapeImages["triangle"] = loadImage('assets/triangle.png');
+    this.shapeImages["star"] = loadImage('assets/star.png');
+
     this.createCards();
     this.shuffleCards();
     this.arrangeCards();
@@ -152,8 +159,8 @@ class CardMatchingGame {
   createCards() {
     let values = [];
     for (let i = 0; i < this.numCards / 2; i++) {
-      values.push(i);
-      values.push(i);
+      values.push(shapeKeys[i % shapeKeys.length]);
+      values.push(shapeKeys[i % shapeKeys.length]); 
     }
 
     for (let i = 0; i < this.numCards; i++) {
@@ -197,9 +204,10 @@ class CardMatchingGame {
       rect(card.x, card.y, this.cardSize, this.cardSize);
 
       if (card.faceUp) {
-        textSize(32);
-        fill(0);
-        text(card.value, card.x + this.cardSize / 2, card.y + this.cardSize / 2);
+        let image = this.shapeImages[card.value];
+        if (image) {
+          image(image, card.x, card.y, this.cardSize, this.cardSize);
+        }
       }
     }
   }
