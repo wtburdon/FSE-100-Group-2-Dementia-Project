@@ -151,6 +151,9 @@ class CardMatchingGame {
     this.shapeImages["triangle"] = loadImage('assets/triangle.png');
     this.shapeImages["star"] = loadImage('assets/star.png');
 
+    this.incorrectSound = loadSound('assets/incorrect.mp3');
+    this.correctSound = loadSound('assets/correct.mp3');
+    
     this.createCards();
     this.shuffleCards();
     this.arrangeCards();
@@ -229,9 +232,11 @@ class CardMatchingGame {
           this.matches++;
           this.selectedCards[0].faceUp = true;
           this.selectedCards[1].faceUp = true;
+          this.correctSound.play();
         } else {
           this.selectedCards[0].faceUp = false;
           this.selectedCards[1].faceUp = false;
+          this.incorrectSound.play();
         }
         this.selectedCards = [];
       }, 1000);
