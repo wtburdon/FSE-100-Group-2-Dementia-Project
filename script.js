@@ -9,9 +9,9 @@ let gameStates = [0, 1, 2, 3];
 let gameIndex = 0;
 
 function preload(){
-  backgroundImage = loadImage('output.jpg');
-  gImage = loadImage('wallpaper.png');
-  pDish = loadImage('pickDish.png');
+  backgroundImage = loadImage('assets/output.jpg');
+  gImage = loadImage('assets/wallpaper.png');
+  pDish = loadImage('assets/pickDish.png');
 }
 
 
@@ -44,29 +44,29 @@ function mainMenu() {
   image(backgroundImage, 0, 0, windowWidth, windowHeight);
   image(pDish, windowWidth/2 - 100, windowHeight/2 - 100, 200, 200);
   
-  lid1 = createImg('closedlid.png', '');
+  lid1 = createImg('assets/closedlid.png', '');
 
   lid1.position(windowWidth/5, (3*windowHeight)/5);
   lid1.size(windowWidth/5, windowHeight/5);
   lid1.mousePressed(game1);
   lid1.mouseOver(() => lid1.attribute('src', 'assets/placeholder.png'));
-  lid1.mouseOut(() => lid1.attribute('src', 'closedlid.png'));
+  lid1.mouseOut(() => lid1.attribute('src', 'assets/closedlid.png'));
 
-  lid2 = createImg('closedlid.png', '');
+  lid2 = createImg('assets/closedlid.png', '');
 
   lid2.position(windowWidth/5 + windowWidth/5, 3*windowHeight/5);
   lid2.size(windowWidth/5, windowHeight/5);
   lid2.mousePressed(game2);
   lid2.mouseOver(() => lid2.attribute('src', 'assets/placeholder.png'));
-  lid2.mouseOut(() => lid2.attribute('src', 'closedlid.png'));
+  lid2.mouseOut(() => lid2.attribute('src', 'assets/closedlid.png'));
 
-  lid3 = createImg('closedlid.png', '');
+  lid3 = createImg('assets/closedlid.png', '');
 
   lid3.position(windowWidth/5 + 2*windowWidth/5, 3*windowHeight/5);
   lid3.size(windowWidth/5, windowHeight/5);
   lid3.mousePressed(game3);
   lid3.mouseOver(() => lid3.attribute('src', 'assets/placeholder.png'));
-  lid3.mouseOut(() => lid3.attribute('src', 'closedlid.png'));
+  lid3.mouseOut(() => lid3.attribute('src', 'assets/closedlid.png'));
 }
 
 function game1() {
@@ -82,13 +82,13 @@ function game1() {
   bg2.position(windowWidth/2, windowHeight/4 + 125);
   bg2.mousePressed(mainMenu);
 
-  lid1 = createImg('rMenu.png', '');
+  lid1 = createImg('assets/rMenu.png', '');
 
   lid1.position(windowWidth/3, windowHeight/4 + 150);
   lid1.size(windowWidth/2, windowHeight/4);
   lid1.mousePressed(mainMenu);
-  lid1.mouseOver(() => lid1.attribute('src', 'rMenuHover.png'));
-  lid1.mouseOut(() => lid1.attribute('src', 'rMenu.png'));
+  lid1.mouseOver(() => lid1.attribute('src', 'assets/rMenuHover.png'));
+  lid1.mouseOut(() => lid1.attribute('src', 'assets/rMenu.png'));
 }
 
 function game2() {
@@ -104,13 +104,13 @@ function game2() {
   bg2.position(windowWidth/2, windowHeight/4 + 125);
   bg2.mousePressed(mainMenu);
 
-  lid1 = createImg('rMenu.png', '');
+  lid1 = createImg('assets/rMenu.png', '');
 
   lid1.position(windowWidth/3, windowHeight/4 + 150);
   lid1.size(windowWidth/2, windowHeight/4);
   lid1.mousePressed(mainMenu);
-  lid1.mouseOver(() => lid1.attribute('src', 'rMenuHover.png'));
-  lid1.mouseOut(() => lid1.attribute('src', 'rMenu.png'));
+  lid1.mouseOver(() => lid1.attribute('src', 'assets/rMenuHover.png'));
+  lid1.mouseOut(() => lid1.attribute('src', 'assets/rMenu.png'));
 }
 
 function game3() {
@@ -126,11 +126,11 @@ function game3() {
   bg2.position(windowWidth/2, windowHeight/4 +125);
   bg2.mousePressed(mainMenu);
 
-  lid1 = createImg('rMenu.png', '');
+  lid1 = createImg('assets/rMenu.png', '');
 
   lid1.position(windowWidth/3, windowHeight/4 + 150);
   lid1.size(windowWidth/2, windowHeight/4);
   lid1.mousePressed(mainMenu);
-  lid1.mouseOver(() => lid1.attribute('src', 'rMenuHover.png'));
-  lid1.mouseOut(() => lid1.attribute('src', 'rMenu.png'));
+  lid1.mouseOver(() => lid1.attribute('src', 'assets/rMenuHover.png'));
+  lid1.mouseOut(() => lid1.attribute('src', 'assets/rMenu.png'));
 }
