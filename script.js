@@ -5,8 +5,9 @@ let difficulty;
 let gImage;
 let lid1, lid2, lid3;
 let pDish;
-let gameStates = [0, 1, 2, 3];
+
 let gameIndex = 0;
+let game;
 
 function preload(){
   backgroundImage = loadImage('assets/output.jpg');
@@ -23,24 +24,27 @@ function setup() {
 }
 
 function draw() {
-  if(gameStates[gameIndex] == 0){
+  if(gameIndex == 0){
+    game.drawCards();
+  }else if(gameIndex == 1){ // Card Match Game
     
-  }else if(gameStates[gameIndex] == 1){
-    
-  }else if(gameStates[gameIndex] == 2){
+  }else if(gameIndex == 2){
 
-  }else if(gameStates[gameIndex] == 3){
+  }else if(gameIndex == 3){
 
   }
   
 }
 
+function mousePressed(){
+  if(gameIndex == 1){
+    game.handleMousePressed();
+  }
+}
+
 function mainMenu() {
   removeElements();
 
-
-  
-  
   image(backgroundImage, 0, 0, windowWidth, windowHeight);
   image(pDish, windowWidth/2 - 100, windowHeight/2 - 100, 200, 200);
   
@@ -89,6 +93,9 @@ function game1() {
   lid1.mousePressed(mainMenu);
   lid1.mouseOver(() => lid1.attribute('src', 'assets/rMenuHover.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/rMenu.png'));
+
+  game = new CardMatchingGame();
+  gameIndex = 1;
 }
 
 function game2() {
