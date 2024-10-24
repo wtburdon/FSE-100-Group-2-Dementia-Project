@@ -1,6 +1,5 @@
 let bg1, bg2, bg3;
 let backgroundImage;
-let difficulty;
 
 let gImage;
 let lid1, lid2, lid3;
@@ -25,9 +24,9 @@ function setup() {
 
 function draw() {
   if(gameIndex == 0){
-    game.drawCards();
-  }else if(gameIndex == 1){ // Card Match Game
     
+  }else if(gameIndex == 1){ // Card Match Game
+    game.drawCards();
   }else if(gameIndex == 2){
 
   }else if(gameIndex == 3){
@@ -80,11 +79,11 @@ function game1() {
   
   bg1 = createButton('Normal');
   bg1.position(windowWidth/2, windowHeight/4 + 100);
-  bg1.mousePressed(mainMenu);
+  bg1.mousePressed(gameStart(0));
 
   bg2 = createButton('Hard');
   bg2.position(windowWidth/2, windowHeight/4 + 125);
-  bg2.mousePressed(mainMenu);
+  bg2.mousePressed(gameStart(1));
 
   lid1 = createImg('assets/rMenu.png', '');
 
@@ -94,8 +93,11 @@ function game1() {
   lid1.mouseOver(() => lid1.attribute('src', 'assets/rMenuHover.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/rMenu.png'));
 
-  game = new CardMatchingGame();
-  gameIndex = 1;
+  function gameStart(difficulty){
+    removeElements();
+    game = new CardMatchingGame(difficulty);
+    gameIndex = 1;
+  }
 }
 
 function game2() {
@@ -105,11 +107,11 @@ function game2() {
   
   bg1 = createButton('Normal');
   bg1.position(windowWidth/2, windowHeight/4 + 100);
-  bg1.mousePressed(mainMenu);
+  bg1.mousePressed(gameStart(0));
 
   bg2 = createButton('Hard');
   bg2.position(windowWidth/2, windowHeight/4 + 125);
-  bg2.mousePressed(mainMenu);
+  bg2.mousePressed(gameStart(1));
 
   lid1 = createImg('assets/rMenu.png', '');
 
@@ -118,6 +120,11 @@ function game2() {
   lid1.mousePressed(mainMenu);
   lid1.mouseOver(() => lid1.attribute('src', 'assets/rMenuHover.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/rMenu.png'));
+
+  function gameStart(difficulty){
+    //game = new CardMatchingGame(difficulty);
+    gameIndex = 2;
+  }
 }
 
 function game3() {
@@ -127,11 +134,11 @@ function game3() {
 
   bg1 = createButton('Normal');
   bg1.position(windowWidth/2, windowHeight/4 + 100);
-  bg1.mousePressed(mainMenu);
+  bg1.mousePressed(gameStart(0));
 
   bg2 = createButton('Hard');
   bg2.position(windowWidth/2, windowHeight/4 +125);
-  bg2.mousePressed(mainMenu);
+  bg2.mousePressed(gameStart(1));
 
   lid1 = createImg('assets/rMenu.png', '');
 
@@ -140,19 +147,32 @@ function game3() {
   lid1.mousePressed(mainMenu);
   lid1.mouseOver(() => lid1.attribute('src', 'assets/rMenuHover.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/rMenu.png'));
+
+
+  function gameStart(difficulty){
+    //game = new CardMatchingGame(difficulty);
+    gameIndex = 3;
+  }
 }
 
 
 class CardMatchingGame {
-  constructor(numCards = 16, cardSize = 100) {
-    this.numCards = numCards;
-    this.cardSize = cardSize;
+  constructor(difficulty) {
+    if(difficulty == 0){
+      this.numCards = 12;
+    }else{
+      this.numCards = 24;
+    }
+    
+    this.cardSize = 100;
     this.cards = [];
     this.selectedCards = [];
     this.matches = 0;
 
     this.shapeImages = {};
 
+    this.backImage = loadImage('assets/CardBack.png');
+    
     this.shapeImages["circle"] = loadImage('assets/circle.png');
     this.shapeImages["square"] = loadImage('assets/square.png');
     this.shapeImages["triangle"] = loadImage('assets/triangle.png');
@@ -211,7 +231,9 @@ class CardMatchingGame {
 
       fill(255);
       stroke(0);
-      rect(card.x, card.y, this.cardSize, this.cardSize);
+      
+      image(backImage, card.x, card.y, this.cardSize, this.cardSize);
+      
 
       if (card.faceUp) {
         let image = this.shapeImages[card.value];
