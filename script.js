@@ -272,3 +272,21 @@ class CardMatchingGame {
     }
   }
 }
+
+
+
+class WordGame {
+  constructor(difficulty){
+    if(difficulty == 0){
+      this.lives = 5;
+    }else{
+      this.lives = 3;
+    }
+
+    
+    
+  }
+
+
+  
+}
