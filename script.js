@@ -12,6 +12,7 @@ function preload(){
   backgroundImage = loadImage('assets/output.jpg');
   gImage = loadImage('assets/wallpaper.png');
   pDish = loadImage('assets/pickDish.png');
+  SoundFormats('mp3');
 }
 
 
@@ -194,9 +195,8 @@ class CardMatchingGame {
       this.shapeImages["star"] = loadImage('assets/star.png');
     }
     
-
-    this.incorrectSound = setPath('assets/incorrect.mp3');
-    this.correctSound = setPath('assets/correct.mp3');
+    this.incorrectSound = loadSound('assets/incorrect.mp3');
+    this.correctSound = loadSound('assets/correct.mp3');
     
     this.createCards();
     this.shuffleCards();
