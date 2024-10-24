@@ -195,8 +195,8 @@ class CardMatchingGame {
     }
     
 
-    this.incorrectSound = loadSound('assets/incorrect.mp3');
-    this.correctSound = loadSound('assets/correct.mp3');
+    this.incorrectSound = setPath('assets/incorrect.mp3');
+    this.correctSound = setPath('assets/correct.mp3');
     
     this.createCards();
     this.shuffleCards();
