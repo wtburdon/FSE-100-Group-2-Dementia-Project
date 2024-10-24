@@ -158,25 +158,45 @@ function game3() {
 
 class CardMatchingGame {
   constructor(difficulty) {
-    if(difficulty == 0){
-      this.numCards = 12;
-    }else{
-      this.numCards = 24;
-    }
-    
     this.cardSize = 100;
     this.cards = [];
     this.selectedCards = [];
     this.matches = 0;
 
     this.shapeImages = {};
-
     this.backImage = loadImage('assets/CardBack.png');
+
+
+    if(difficulty == 0){
+      this.numCards = 12;
+      this.shapeImages["circle"] = loadImage('assets/circle.png');
+      this.shapeImages["diamond"] = loadImage('assets/diamond.png');
+      this.shapeImages["donut"] = loadImage('assets/donut.png');
+      this.shapeImages["heart"] = loadImage('assets/heart.png');
+      this.shapeImages["hexagon"] = loadImage('assets/hexagon.png');
+      this.shapeImages["Lshape"] = loadImage('assets/Lshape.png');
+      this.shapeImages["pentagon"] = loadImage('assets/pentagon.png');
+      this.shapeImages["spade"] = loadImage('assets/spade.png');
+      this.shapeImages["trapezoid"] = loadImage('assets/trapezoid.png');
+      this.shapeImages["square"] = loadImage('assets/square.png');
+      this.shapeImages["triangle"] = loadImage('assets/triangle.png');
+      this.shapeImages["star"] = loadImage('assets/star.png');
+    }else{
+      this.numCards = 24;
+      this.shapeImages["circle"] = loadImage('assets/circle.png');
+      this.shapeImages["diamond"] = loadImage('assets/diamond.png');
+      this.shapeImages["donut"] = loadImage('assets/donut.png');
+      this.shapeImages["heart"] = loadImage('assets/heart.png');
+      this.shapeImages["hexagon"] = loadImage('assets/hexagon.png');
+      this.shapeImages["Lshape"] = loadImage('assets/Lshape.png');
+      this.shapeImages["pentagon"] = loadImage('assets/pentagon.png');
+      this.shapeImages["spade"] = loadImage('assets/spade.png');
+      this.shapeImages["trapezoid"] = loadImage('assets/trapezoid.png');
+      this.shapeImages["square"] = loadImage('assets/square.png');
+      this.shapeImages["triangle"] = loadImage('assets/triangle.png');
+      this.shapeImages["star"] = loadImage('assets/star.png');
+    }
     
-    this.shapeImages["circle"] = loadImage('assets/circle.png');
-    this.shapeImages["square"] = loadImage('assets/square.png');
-    this.shapeImages["triangle"] = loadImage('assets/triangle.png');
-    this.shapeImages["star"] = loadImage('assets/star.png');
 
     this.incorrectSound = loadSound('assets/incorrect.mp3');
     this.correctSound = loadSound('assets/correct.mp3');
