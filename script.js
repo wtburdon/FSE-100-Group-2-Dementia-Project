@@ -175,12 +175,7 @@ class CardMatchingGame {
       this.shapeImages["heart"] = loadImage('assets/heart.png');
       this.shapeImages["hexagon"] = loadImage('assets/hexagon.png');
       this.shapeImages["Lshape"] = loadImage('assets/Lshape.png');
-      this.shapeImages["pentagon"] = loadImage('assets/pentagon.png');
-      this.shapeImages["spade"] = loadImage('assets/spade.png');
-      this.shapeImages["trapezoid"] = loadImage('assets/trapezoid.png');
-      this.shapeImages["square"] = loadImage('assets/square.png');
-      this.shapeImages["triangle"] = loadImage('assets/triangle.png');
-      this.shapeImages["star"] = loadImage('assets/star.png');
+      
     }else{
       this.numCards = 24;
       this.shapeImages["circle"] = loadImage('assets/circle.png');
