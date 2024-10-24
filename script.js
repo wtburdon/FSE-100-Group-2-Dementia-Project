@@ -205,6 +205,9 @@ class CardMatchingGame {
 
   createCards() {
     let values = [];
+    
+    let shapeKeys = Object.keys(this.shapeImages);
+    
     for (let i = 0; i < this.numCards / 2; i++) {
       values.push(shapeKeys[i % shapeKeys.length]);
       values.push(shapeKeys[i % shapeKeys.length]); 
