@@ -79,11 +79,11 @@ function game1() {
   
   bg1 = createButton('Normal');
   bg1.position(windowWidth/2, windowHeight/4 + 100);
-  bg1.mousePressed(gameStart(0));
+  bg1.mousePressed(game1Start(0));
 
   bg2 = createButton('Hard');
   bg2.position(windowWidth/2, windowHeight/4 + 125);
-  bg2.mousePressed(gameStart(1));
+  bg2.mousePressed(game1Start(1));
 
   lid1 = createImg('assets/rMenu.png', '');
 
@@ -93,11 +93,13 @@ function game1() {
   lid1.mouseOver(() => lid1.attribute('src', 'assets/rMenuHover.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/rMenu.png'));
 
-  function gameStart(difficulty){
-    removeElements();
-    game = new CardMatchingGame(difficulty);
-    gameIndex = 1;
-  }
+  
+}
+
+function game1Start(difficulty){
+  removeElements();
+  game = new CardMatchingGame(difficulty);
+  gameIndex = 1;
 }
 
 function game2() {
