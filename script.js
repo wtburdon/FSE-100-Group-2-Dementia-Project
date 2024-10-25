@@ -106,7 +106,7 @@ function game1() {
 
   bg2 = createButton('Hard');
   bg2.position(windowWidth/2, windowHeight/4 + 125);
-  bg2.mousePressed(() => game1Start(0));
+  bg2.mousePressed(() => game1Start(1));
 
   lid1 = createImg('assets/rMenu.png', '');
 
@@ -122,7 +122,7 @@ function game1() {
 function game1Start(difficulty){
   removeElements();
   game = new CardMatchingGame(difficulty);
-  console.log("Game started with difficulty:", difficulty);
+  
   gameIndex = 1;
 }
 
