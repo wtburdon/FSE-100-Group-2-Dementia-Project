@@ -66,6 +66,7 @@ function mousePressed(){
 
 function mainMenu() {
   removeElements();
+  gameIndex = 0;
 
   image(backgroundImage, 0, 0, windowWidth, windowHeight);
   image(pDish, windowWidth/2 - 100, windowHeight/2 - 100, 200, 200);
@@ -191,6 +192,7 @@ class CardMatchingGame {
     this.selectedCards = [];
     this.matches = 0;
     this.attempts = 0;
+    this.gameOver = false;
 
     this.shapeImages = {};
     this.backImage = loadImage('assets/CardBack.png');
@@ -272,6 +274,10 @@ class CardMatchingGame {
   }
 
   drawCards() {
+    if (this.gameOver) {
+      return;
+    }
+    
     for (let i = 0; i < this.numCards; i++) {
       let card = this.cards[i];
 
@@ -292,7 +298,8 @@ class CardMatchingGame {
 
   isGameOver() {
     console.log("Matches:", this.matches, "Total Pairs:", this.numCards / 2);
-    return this.matches === this.numCards / 2;
+    this.gameOver = (this.matches === this.numCards / 2);
+    return this.gameOver;
   }
 
   displayEndScreen() {
