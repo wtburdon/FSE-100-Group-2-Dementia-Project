@@ -316,6 +316,8 @@ class CardMatchingGame {
 
   
   handleMousePressed() {
+    console.log("Mouse pressed, current matches:", this.matches);
+    
     for (let i = 0; i < this.numCards; i++) {
       let card = this.cards[i];
       if (dist(mouseX, mouseY, card.x + this.cardSize / 2, card.y + this.cardSize / 2) < this.cardSize / 2) {
