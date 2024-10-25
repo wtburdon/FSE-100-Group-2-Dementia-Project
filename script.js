@@ -291,6 +291,7 @@ class CardMatchingGame {
   }
 
   isGameOver() {
+    console.log("Matches:", this.matches, "Total Pairs:", this.numCards / 2);
     return this.matches === this.numCards / 2;
   }
 
