@@ -34,7 +34,7 @@ function preload(){
   };
 
   
-  SoundFormats('mp3');
+  //SoundFormats('mp3');
 }
 
 
@@ -274,13 +274,13 @@ class CardMatchingGame {
       fill(255);
       stroke(0);
       
-      image(backImage, card.x, card.y, this.cardSize, this.cardSize);
+      image(this.backImage, card.x, card.y, this.cardSize, this.cardSize);
       
 
       if (card.faceUp) {
-        let image = this.shapeImages[card.value];
-        if (image) {
-          image(image, card.x, card.y, this.cardSize, this.cardSize);
+        let img = this.shapeImages[card.value];
+        if (img) {
+          image(img, card.x, card.y, this.cardSize, this.cardSize);
         }
       }
     }
