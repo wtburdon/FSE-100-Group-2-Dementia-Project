@@ -291,7 +291,7 @@ class CardMatchingGame {
   }
 
   isGameOver() {
-    return this.matches === this.numCards / 2; // Game over check
+    return this.matches === this.numCards / 2;
   }
 
   displayEndScreen() {
@@ -326,6 +326,8 @@ class CardMatchingGame {
     }
 
     if (this.selectedCards.length === 2) {
+      this.attempts++;
+      
       setTimeout(() => {
         if (this.selectedCards[0].value === this.selectedCards[1].value) {
           this.matches++;
@@ -338,14 +340,11 @@ class CardMatchingGame {
           //this.incorrectSound.play();
         }
         this.selectedCards = [];
-      }, 1000);
-    }
 
-    if (this.selectedCards.length === 2) {
-      this.attempts++;
-      if (this.isGameOver()) {
-        this.displayEndScreen();
-      }
+        if (this.isGameOver()) {
+          this.displayEndScreen();
+        }
+      }, 1000);
     }
   }
 }
