@@ -184,16 +184,19 @@ function game3() {
 
 class CardMatchingGame {
   constructor(difficulty) {
+    this.difficulty = difficulty;
+    
     this.cardSize = 100;
     this.cards = [];
     this.selectedCards = [];
     this.matches = 0;
+    this.attempts = 0;
 
     this.shapeImages = {};
     this.backImage = loadImage('assets/CardBack.png');
 
 
-    if(difficulty == 0){
+    if(this.difficulty == 0){
       this.numCards = 12;
       this.shapeImages["circle"] = loadImage('assets/circle.png');
       this.shapeImages["diamond"] = loadImage('assets/diamond.png');
@@ -294,6 +297,7 @@ class CardMatchingGame {
         if (!card.faceUp && this.selectedCards.length < 2) {
           card.faceUp = true;
           this.selectedCards.push(card);
+          this.attempts++;
         }
       }
     }
@@ -311,8 +315,28 @@ class CardMatchingGame {
           //this.incorrectSound.play();
         }
         this.selectedCards = [];
+
+        if (this.matches === this.numCards / 2) {
+          this.gameOver();
+        }
       }, 1000);
     }
+  }
+
+  gameOver() {
+    removeElements();
+    image(gImage, 0, 0, windowWidth, windowHeight);
+    // Display score and return to main menu button
+    textSize(32);
+    fill(0);
+    text(`You completed the game in ${this.attempts} attempts!`, windowWidth / 2 - 150, windowHeight / 2);
+    lid1 = createImg('assets/rMenu.png', '');
+    lid1.position(windowWidth / 2 - 100, windowHeight / 2 + 50);
+    lid1.size(200, 100);
+    lid1.mousePressed(mainMenu);
+    lid1.mouseOver(() => lid1.attribute('src', 'assets/rMenuHover.png'));
+    lid1.mouseOut(() => lid1.attribute('src', 'assets/rMenu.png'));
+    gameIndex = 0; // Return to main menu
   }
 }
 
