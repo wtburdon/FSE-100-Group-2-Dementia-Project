@@ -205,12 +205,12 @@ class CardMatchingGame {
 
   createCards() {
     let values = [];
-    console.log(this.shapeImages);
     let shapeKeys = Object.keys(this.shapeImages);
     
     for (let i = 0; i < this.numCards / 2; i++) {
-      values.push(shapeKeys[i % shapeKeys.length]);
-      values.push(shapeKeys[i % shapeKeys.length]); 
+      let shapeIndex = i % shapeKeys.length;
+      values.push(shapeKeys[shapeIndex]); 
+      values.push(shapeKeys[shapeIndex]); 
     }
 
     for (let i = 0; i < this.numCards; i++) {
