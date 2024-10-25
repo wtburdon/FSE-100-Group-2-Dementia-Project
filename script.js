@@ -122,6 +122,7 @@ function game1() {
 function game1Start(difficulty){
   removeElements();
   game = new CardMatchingGame(difficulty);
+  console.log("Game started with difficulty:", difficulty);
   gameIndex = 1;
 }
 
