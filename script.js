@@ -102,11 +102,11 @@ function game1() {
   
   bg1 = createButton('Normal');
   bg1.position(windowWidth/2, windowHeight/4 + 100);
-  bg1.mousePressed(game1Start(0));
+  bg1.mousePressed(() => game1Start(0));
 
   bg2 = createButton('Hard');
   bg2.position(windowWidth/2, windowHeight/4 + 125);
-  bg2.mousePressed(game1Start(1));
+  bg2.mousePressed(() => game1Start(0));
 
   lid1 = createImg('assets/rMenu.png', '');
 
