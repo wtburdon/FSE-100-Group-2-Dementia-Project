@@ -186,19 +186,17 @@ function game3() {
 class CardMatchingGame {
   constructor(difficulty) {
     this.difficulty = difficulty; 
-    
     this.cardSize = 100;
     this.cards = [];
     this.selectedCards = [];
     this.matches = 0;
     this.attempts = 0;
-    this.gameOver = false;
+    this.gameOver = false; 
 
     this.shapeImages = {};
     this.backImage = loadImage('assets/CardBack.png');
 
-
-    if(this.difficulty == 0){
+    if (this.difficulty == 0) {
       this.numCards = 12;
       this.shapeImages["circle"] = loadImage('assets/circle.png');
       this.shapeImages["diamond"] = loadImage('assets/diamond.png');
@@ -206,8 +204,7 @@ class CardMatchingGame {
       this.shapeImages["heart"] = loadImage('assets/heart.png');
       this.shapeImages["hexagon"] = loadImage('assets/hexagon.png');
       this.shapeImages["Lshape"] = loadImage('assets/Lshape.png');
-      
-    }else{
+    } else {
       this.numCards = 24;
       this.shapeImages["circle"] = loadImage('assets/circle.png');
       this.shapeImages["diamond"] = loadImage('assets/diamond.png');
@@ -222,70 +219,24 @@ class CardMatchingGame {
       this.shapeImages["triangle"] = loadImage('assets/triangle.png');
       this.shapeImages["star"] = loadImage('assets/star.png');
     }
-    
-    //this.incorrectSound = loadSound('assets/incorrect.mp3');
-    //this.correctSound = loadSound('assets/correct.mp3');
-    
+
     this.createCards();
     this.shuffleCards();
     this.arrangeCards();
   }
 
-  createCards() {
-    let values = [];
-    let shapeKeys = Object.keys(this.shapeImages);
-    
-    for (let i = 0; i < this.numCards / 2; i++) {
-      let shapeIndex = i % shapeKeys.length;
-      values.push(shapeKeys[shapeIndex]); 
-      values.push(shapeKeys[shapeIndex]); 
-    }
-
-    for (let i = 0; i < this.numCards; i++) {
-      let card = {
-        value: values[i],
-        faceUp: false,
-        x: 0,
-        y: 0
-      };
-      this.cards.push(card);
-    }
-  }
-
-  shuffleCards() {
-    for (let i = this.cards.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
-    }
-  }
-
-  arrangeCards() {
-    let x = 50;
-    let y = 50;
-    for (let i = 0; i < this.numCards; i++) {
-      this.cards[i].x = x;
-      this.cards[i].y = y;
-      x += this.cardSize + 20;
-      if (x > width - this.cardSize) {
-        x = 50;
-        y += this.cardSize + 20;
-      }
-    }
-  }
-
   drawCards() {
     if (this.gameOver) {
-      return;
+      return; 
     }
-    
+
     for (let i = 0; i < this.numCards; i++) {
       let card = this.cards[i];
 
       fill(255);
       stroke(0);
-      
+
       image(this.backImage, card.x, card.y, this.cardSize, this.cardSize);
-      
 
       if (card.faceUp) {
         let img = this.shapeImages[card.value];
@@ -321,10 +272,9 @@ class CardMatchingGame {
     returnBtn.mouseOut(() => returnBtn.attribute('src', 'assets/rMenu.png'));
   }
 
-  
   handleMousePressed() {
     console.log("Mouse pressed, current matches:", this.matches);
-    
+
     for (let i = 0; i < this.numCards; i++) {
       let card = this.cards[i];
       if (dist(mouseX, mouseY, card.x + this.cardSize / 2, card.y + this.cardSize / 2) < this.cardSize / 2) {
@@ -337,17 +287,15 @@ class CardMatchingGame {
 
     if (this.selectedCards.length === 2) {
       this.attempts++;
-      
+
       setTimeout(() => {
         if (this.selectedCards[0].value === this.selectedCards[1].value) {
           this.matches++;
           this.selectedCards[0].faceUp = true;
           this.selectedCards[1].faceUp = true;
-          //this.correctSound.play();
         } else {
           this.selectedCards[0].faceUp = false;
           this.selectedCards[1].faceUp = false;
-          //this.incorrectSound.play();
         }
         this.selectedCards = [];
 
