@@ -184,7 +184,7 @@ function game3() {
 
 class CardMatchingGame {
   constructor(difficulty) {
-    this.difficulty = difficulty;
+    this.difficulty = difficulty; 
     
     this.cardSize = 100;
     this.cards = [];
@@ -290,6 +290,30 @@ class CardMatchingGame {
     }
   }
 
+  isGameOver() {
+    return this.matches === this.numCards / 2; // Game over check
+  }
+
+  displayEndScreen() {
+    background(255);
+    textSize(32);
+    fill(0);
+    textAlign(CENTER);
+    text(`Game Over!`, width / 2, height / 2 - 50);
+    text(`Attempts: ${this.attempts}`, width / 2, height / 2);
+
+    let returnBtn = createImg('assets/rMenu.png', 'Return to Menu');
+    returnBtn.position(width / 3, height / 2 + 50);
+    returnBtn.size(width / 2, height / 4);
+    returnBtn.mousePressed(() => {
+      returnBtn.remove();
+      mainMenu();
+    });
+    returnBtn.mouseOver(() => returnBtn.attribute('src', 'assets/rMenuHover.png'));
+    returnBtn.mouseOut(() => returnBtn.attribute('src', 'assets/rMenu.png'));
+  }
+
+  
   handleMousePressed() {
     for (let i = 0; i < this.numCards; i++) {
       let card = this.cards[i];
@@ -297,7 +321,6 @@ class CardMatchingGame {
         if (!card.faceUp && this.selectedCards.length < 2) {
           card.faceUp = true;
           this.selectedCards.push(card);
-          this.attempts++;
         }
       }
     }
@@ -315,28 +338,15 @@ class CardMatchingGame {
           //this.incorrectSound.play();
         }
         this.selectedCards = [];
-
-        if (this.matches === this.numCards / 2) {
-          this.gameOver();
-        }
       }, 1000);
     }
-  }
 
-  gameOver() {
-    removeElements();
-    image(gImage, 0, 0, windowWidth, windowHeight);
-    // Display score and return to main menu button
-    textSize(32);
-    fill(0);
-    text(`You completed the game in ${this.attempts} attempts!`, windowWidth / 2 - 150, windowHeight / 2);
-    lid1 = createImg('assets/rMenu.png', '');
-    lid1.position(windowWidth / 2 - 100, windowHeight / 2 + 50);
-    lid1.size(200, 100);
-    lid1.mousePressed(mainMenu);
-    lid1.mouseOver(() => lid1.attribute('src', 'assets/rMenuHover.png'));
-    lid1.mouseOut(() => lid1.attribute('src', 'assets/rMenu.png'));
-    gameIndex = 0; // Return to main menu
+    if (this.selectedCards.length === 2) {
+      this.attempts++;
+      if (this.isGameOver()) {
+        this.displayEndScreen();
+      }
+    }
   }
 }
 
