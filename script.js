@@ -8,6 +8,9 @@ let pDish;
 let gameIndex = 0;
 let game;
 
+let backImage;
+let shapeImages;
+
 function preload(){
   backgroundImage = loadImage('assets/output.jpg');
   gImage = loadImage('assets/wallpaper.png');
