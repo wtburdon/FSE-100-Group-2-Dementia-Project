@@ -12,6 +12,25 @@ function preload(){
   backgroundImage = loadImage('assets/output.jpg');
   gImage = loadImage('assets/wallpaper.png');
   pDish = loadImage('assets/pickDish.png');
+  
+  backImage = loadImage('assets/CardBack.png');
+  
+  shapeImages = {
+    "circle": loadImage('assets/circle.png'),
+    "diamond": loadImage('assets/diamond.png'),
+    "donut": loadImage('assets/donut.png'),
+    "heart": loadImage('assets/heart.png'),
+    "hexagon": loadImage('assets/hexagon.png'),
+    "Lshape": loadImage('assets/Lshape.png'),
+    "pentagon": loadImage('assets/pentagon.png'),
+    "spade": loadImage('assets/spade.png'),
+    "trapezoid": loadImage('assets/trapezoid.png'),
+    "square": loadImage('assets/square.png'),
+    "triangle": loadImage('assets/triangle.png'),
+    "star": loadImage('assets/star.png')
+  };
+
+  
   SoundFormats('mp3');
 }
 
