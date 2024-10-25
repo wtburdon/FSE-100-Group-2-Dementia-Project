@@ -225,6 +225,48 @@ class CardMatchingGame {
     this.arrangeCards();
   }
 
+  createCards() {
+    let values = [];
+    let shapeKeys = Object.keys(this.shapeImages);
+
+    for (let i = 0; i < this.numCards / 2; i++) {
+      let shapeIndex = i % shapeKeys.length;
+      values.push(shapeKeys[shapeIndex]); 
+      values.push(shapeKeys[shapeIndex]); 
+    }
+
+    for (let i = 0; i < this.numCards; i++) {
+      let card = {
+        value: values[i],
+        faceUp: false,
+        x: 0,
+        y: 0
+      };
+      this.cards.push(card);
+    }
+  }
+
+  shuffleCards() {
+    for (let i = this.cards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
+    }
+  }
+
+  arrangeCards() {
+    let x = 50;
+    let y = 50;
+    for (let i = 0; i < this.numCards; i++) {
+      this.cards[i].x = x;
+      this.cards[i].y = y;
+      x += this.cardSize + 20;
+      if (x > width - this.cardSize) {
+        x = 50;
+        y += this.cardSize + 20;
+      }
+    }
+  }
+  
   drawCards() {
     if (this.gameOver) {
       return; 
