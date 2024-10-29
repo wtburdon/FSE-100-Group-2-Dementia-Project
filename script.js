@@ -11,6 +11,9 @@ let game;
 let backImage;
 let shapeImages;
 
+let correctSound;
+let incorrectSound;
+
 function preload(){
   backgroundImage = loadImage('assets/output.jpg');
   gImage = loadImage('assets/wallpaper.png');
@@ -33,8 +36,9 @@ function preload(){
     "star": loadImage('assets/star.png')
   };
 
+  correctSound = loadSound('assets/incorrect.mp3');
+  incorrectSound = loadSound('assets/correct.mp3');
   
-  //SoundFormats('mp3');
 }
 
 
@@ -196,6 +200,9 @@ class CardMatchingGame {
     this.shapeImages = {};
     this.backImage = loadImage('assets/CardBack.png');
 
+    this.correctSound = loadSound('assets/correct.mp3');
+    this.incorrectSound = loadSound('assets/incorrect.mp3');
+    
     if (this.difficulty == 0) {
       this.numCards = 12;
       this.shapeImages["circle"] = loadImage('assets/circle.png');
@@ -224,11 +231,11 @@ class CardMatchingGame {
     this.shuffleCards();
     this.arrangeCards();
   }
-
+  
   createCards() {
     let values = [];
     let shapeKeys = Object.keys(this.shapeImages);
-
+    
     for (let i = 0; i < this.numCards / 2; i++) {
       let shapeIndex = i % shapeKeys.length;
       values.push(shapeKeys[shapeIndex]); 
@@ -266,7 +273,7 @@ class CardMatchingGame {
       }
     }
   }
-  
+
   drawCards() {
     if (this.gameOver) {
       return; 
@@ -335,9 +342,13 @@ class CardMatchingGame {
           this.matches++;
           this.selectedCards[0].faceUp = true;
           this.selectedCards[1].faceUp = true;
+          
+          this.correctSound.play();
         } else {
           this.selectedCards[0].faceUp = false;
           this.selectedCards[1].faceUp = false;
+          
+          this.incorrectSound.play();
         }
         this.selectedCards = [];
 
