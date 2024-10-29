@@ -4,6 +4,7 @@ let backgroundImage;
 let gImage;
 let lid1, lid2, lid3;
 let pDish;
+let homeButton;
 
 let gameIndex = 0;
 let game;
@@ -18,6 +19,7 @@ function preload(){
   backgroundImage = loadImage('assets/output.jpg');
   gImage = loadImage('assets/wallpaper.png');
   pDish = loadImage('assets/pickDish.png');
+  game1background = loadImage('assets/game1bg.png');
   
   backImage = loadImage('assets/CardBack.png');
   
@@ -100,6 +102,18 @@ function mainMenu() {
   lid3.mouseOut(() => lid3.attribute('src', 'assets/closedlid.png'));
 }
 
+function homeButtonSetup() {                                              
+  
+  homeButton = createImg('assets/homeSymbol.png', '');
+
+  homeButton.position(windowWidth-75, windowHeight-75);
+  homeButton.size(70, 70);
+  homeButton.mousePressed(mainMenu);
+  homeButton.mouseOver(() => homeButton.attribute('src', 'assets/homeSymbolHovered.png'));
+  homeButton.mouseOut(() => homeButton.attribute('src', 'assets/homeSymbol.png'));
+  
+}
+
 function game1() {
   removeElements();
 
@@ -126,6 +140,8 @@ function game1() {
 
 function game1Start(difficulty){
   removeElements();
+  image(game1background, 0, 0, windowWidth, windowHeight);
+  homeButtonSetup();
   game = new CardMatchingGame(difficulty);
   
   gameIndex = 1;
@@ -304,6 +320,7 @@ class CardMatchingGame {
 
   displayEndScreen() {
     background(255);
+    image(gImage, 0, 0, windowWidth, windowHeight);
     textSize(32);
     fill(0);
     textAlign(CENTER);
