@@ -80,7 +80,7 @@ function mainMenu() {
   lid1.position(windowWidth/5, (3*windowHeight)/5);
   lid1.size(windowWidth/5, windowHeight/5);
   lid1.mousePressed(game1);
-  lid1.mouseOver(() => lid1.attribute('src', 'assets/placeholder.png'));
+  lid1.mouseOver(() => lid1.attribute('src', 'assets/game1Lid.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/closedlid.png'));
 
   lid2 = createImg('assets/closedlid.png', '');
@@ -88,7 +88,7 @@ function mainMenu() {
   lid2.position(windowWidth/5 + windowWidth/5, 3*windowHeight/5);
   lid2.size(windowWidth/5, windowHeight/5);
   lid2.mousePressed(game2);
-  lid2.mouseOver(() => lid2.attribute('src', 'assets/placeholder.png'));
+  lid2.mouseOver(() => lid2.attribute('src', 'assets/game2Lid.png'));
   lid2.mouseOut(() => lid2.attribute('src', 'assets/closedlid.png'));
 
   lid3 = createImg('assets/closedlid.png', '');
@@ -96,7 +96,7 @@ function mainMenu() {
   lid3.position(windowWidth/5 + 2*windowWidth/5, 3*windowHeight/5);
   lid3.size(windowWidth/5, windowHeight/5);
   lid3.mousePressed(game3);
-  lid3.mouseOver(() => lid3.attribute('src', 'assets/placeholder.png'));
+  lid3.mouseOver(() => lid3.attribute('src', 'assets/game3Lid.png'));
   lid3.mouseOut(() => lid3.attribute('src', 'assets/closedlid.png'));
 }
 
