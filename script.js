@@ -15,6 +15,13 @@ let shapeImages;
 let correctSound;
 let incorrectSound;
 
+let score = 0;
+let time = 5;
+let player;
+let object;
+let bug;
+let difficulty = 0;
+
 function preload(){
   backgroundImage = loadImage('assets/output.jpg');
   gImage = loadImage('assets/wallpaper.png');
@@ -40,7 +47,9 @@ function preload(){
 
   correctSound = loadSound('assets/incorrect.mp3');
   incorrectSound = loadSound('assets/correct.mp3');
-  
+
+
+  bug = loadImage('bug1.jpg')
 }
 
 
@@ -57,7 +66,7 @@ function draw() {
   }else if(gameIndex == 1){ // Card Match Game
     game.drawCards();
   }else if(gameIndex == 2){
-
+    g2Draw();
   }else if(gameIndex == 3){
 
   }
@@ -154,11 +163,11 @@ function game2() {
   
   bg1 = createButton('Normal');
   bg1.position(windowWidth/2, windowHeight/4 + 100);
-  bg1.mousePressed(gameStart(0));
+  bg1.mousePressed(() => {difficulty = 0; game2Start();} );
 
   bg2 = createButton('Hard');
   bg2.position(windowWidth/2, windowHeight/4 + 125);
-  bg2.mousePressed(gameStart(1));
+  bg2.mousePressed(() => {difficulty = 1; game2Start();} );
 
   lid1 = createImg('assets/rMenu.png', '');
 
@@ -168,10 +177,6 @@ function game2() {
   lid1.mouseOver(() => lid1.attribute('src', 'assets/rMenuHover.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/rMenu.png'));
 
-  function gameStart(difficulty){
-    //game = new CardMatchingGame(difficulty);
-    gameIndex = 2;
-  }
 }
 
 function game3() {
@@ -378,19 +383,50 @@ class CardMatchingGame {
 }
 
 
-
-class WordGame {
-  constructor(difficulty){
-    if(difficulty == 0){
-      this.lives = 5;
-    }else{
-      this.lives = 3;
-    }
-
-    
-    
-  }
-
-
+function game2Start(){
+  removeElements();
   
+  g2Setup()
+  gameIndex = 2
+}
+
+function g2Setup(){
+  bug = createImg('bug.png', '');
+  bug.position(random(width), random(height));
+  bug.size(30/400 * windowWidth, 30/400 * windowHeight);
+  bug.mousePressed(bugPress);
+}
+
+function bugPress(){
+  correctSound.play();
+  
+  bug.position(random(width), random(height));
+  score++;
+  if(score > 1){
+    if(difficulty == 0){
+      time += 1;
+    }
+    else{
+      time += 0.5;
+    }
+  }
+}
+
+function g2Draw(){
+  
+  
+  textSize(20);
+  text("Score: ", 50/400 * windowWidth, 350/400 * windowHeight);
+  text(score, 110/400 * windowWidth, 350/400 * windowHeight)
+
+  time -= 1 / 60;
+  if(time <= 0){
+    time = 0;
+    textSize(20);
+    text("Game over!", 200/400 * windowWidth, 200/400 * windowHeight);
+    gameIndex = 0;
+    // add return to menu button
+  }
+  let timer = map(time, 0, 5, 0, 200);
+  rect(20/400 * windowWidth, 20/400 * windowHiehg, 10, timer);
 }
