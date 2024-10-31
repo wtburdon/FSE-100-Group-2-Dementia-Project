@@ -428,5 +428,5 @@ function g2Draw(){
     // add return to menu button
   }
   let timer = map(time, 0, 5, 0, 200);
-  rect(20/400 * windowWidth, 20/400 * windowHiehg, 10, timer);
+  rect(20/400 * windowWidth, 20/400 * windowHeight, 10, timer);
 }
