@@ -49,7 +49,7 @@ function preload(){
   incorrectSound = loadSound('assets/correct.mp3');
 
 
-  bug = loadImage('bug1.jpg')
+  bug = loadImage('assets/bug1.jpg')
 }
 
 
@@ -391,7 +391,7 @@ function game2Start(){
 }
 
 function g2Setup(){
-  bug = createImg('bug1.jpeg', '');
+  bug = createImg('assets/bug1.jpeg', '');
   bug.position(random(width), random(height));
   bug.size(30/400 * windowWidth, 30/400 * windowHeight);
   bug.mousePressed(bugPress);
