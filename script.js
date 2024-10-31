@@ -391,7 +391,7 @@ function game2Start(){
 }
 
 function g2Setup(){
-  bug = createImg('bug.png', '');
+  bug = createImg('bug1.jpeg', '');
   bug.position(random(width), random(height));
   bug.size(30/400 * windowWidth, 30/400 * windowHeight);
   bug.mousePressed(bugPress);
