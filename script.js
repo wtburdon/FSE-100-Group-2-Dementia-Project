@@ -22,6 +22,8 @@ let object;
 let bug;
 let difficulty = 0;
 
+let game2bg2;
+
 function preload(){
   backgroundImage = loadImage('assets/output.jpg');
   gImage = loadImage('assets/wallpaper.png');
@@ -45,11 +47,17 @@ function preload(){
     "star": loadImage('assets/star.png')
   };
 
+  
+  
   correctSound = loadSound('assets/incorrect.mp3');
   incorrectSound = loadSound('assets/correct.mp3');
 
+  game1background = loadImage('assets/game1bg.png');
 
-  bug = loadImage('assets/bug1.jpg')
+  bug = loadImage('assets/ant.png');
+  
+  game2bg2 = loadImage('assets/game2bg.png');
+  
 }
 
 
@@ -111,7 +119,7 @@ function mainMenu() {
   lid3.mouseOut(() => lid3.attribute('src', 'assets/closedlid.png'));
 }
 
-function homeButtonSetup() {                                              
+function homeButtonSetup() {
   
   homeButton = createImg('assets/homeSymbol.png', '');
 
@@ -128,21 +136,27 @@ function game1() {
 
   image(gImage, 0, 0, windowWidth, windowHeight);
   
-  bg1 = createButton('Normal');
-  bg1.position(windowWidth/2, windowHeight/4 + 100);
+  bg1 = createImg('assets/NormalButton.png', '');                  
+  bg1.position(windowWidth/3-125, windowHeight/4-60);
+  bg1.size(285, 120);
   bg1.mousePressed(() => game1Start(0));
+  bg1.mouseOver(() => bg1.attribute('src', 'assets/NormalButtonHovered.png'));
+  bg1.mouseOut(() => bg1.attribute('src', 'assets/NormalButton.png'));
 
-  bg2 = createButton('Hard');
-  bg2.position(windowWidth/2, windowHeight/4 + 125);
+  bg2 = createImg('assets/HardButton.png', '');                    
+  bg2.position(windowWidth/3, windowHeight/2-75);
+  bg2.size(285, 120);
   bg2.mousePressed(() => game1Start(1));
+  bg2.mouseOver(() => bg2.attribute('src', 'assets/HardButtonHovered.png'));
+  bg2.mouseOut(() => bg2.attribute('src', 'assets/HardButton.png'));
 
-  lid1 = createImg('assets/rMenu.png', '');
+  lid1 = createImg('assets/MenuButton.png', '');
 
-  lid1.position(windowWidth/3, windowHeight/4 + 150);
-  lid1.size(windowWidth/2, windowHeight/4);
+  lid1.position(windowWidth/2-247.5, windowHeight-150);
+  lid1.size(495, 120);
   lid1.mousePressed(mainMenu);
-  lid1.mouseOver(() => lid1.attribute('src', 'assets/rMenuHover.png'));
-  lid1.mouseOut(() => lid1.attribute('src', 'assets/rMenu.png'));
+  lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuBottonHovered.png'));
+  lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
 
   
 }
@@ -161,44 +175,56 @@ function game2() {
   
   image(gImage, 0, 0, windowWidth, windowHeight);
   
-  bg1 = createButton('Normal');
-  bg1.position(windowWidth/2, windowHeight/4 + 100);
-  bg1.mousePressed(() => {difficulty = 0; game2Start();} );
+  bg1 = createImg('assets/NormalButton.png', '');                  
+  bg1.position(windowWidth/3-125, windowHeight/4-60);
+  bg1.size(285, 120);
+  bg1.mousePressed(() => {difficulty = 1; game2Start();});
+  bg1.mouseOver(() => bg1.attribute('src', 'assets/NormalButtonHovered.png'));
+  bg1.mouseOut(() => bg1.attribute('src', 'assets/NormalButton.png'));
 
-  bg2 = createButton('Hard');
-  bg2.position(windowWidth/2, windowHeight/4 + 125);
-  bg2.mousePressed(() => {difficulty = 1; game2Start();} );
+  bg2 = createImg('assets/HardButton.png', '');                    
+  bg2.position(windowWidth/3, windowHeight/2-75);
+  bg2.size(285, 120);
+  bg2.mousePressed(() => {difficulty = 1; game2Start();});
+  bg2.mouseOver(() => bg2.attribute('src', 'assets/HardButtonHovered.png'));
+  bg2.mouseOut(() => bg2.attribute('src', 'assets/HardButton.png'));
+  
+  lid1 = createImg('assets/MenuButton.png', '');
 
-  lid1 = createImg('assets/rMenu.png', '');
-
-  lid1.position(windowWidth/3, windowHeight/4 + 150);
-  lid1.size(windowWidth/2, windowHeight/4);
+  lid1.position(windowWidth/2-247.5, windowHeight-150);
+  lid1.size(495, 120);
   lid1.mousePressed(mainMenu);
-  lid1.mouseOver(() => lid1.attribute('src', 'assets/rMenuHover.png'));
-  lid1.mouseOut(() => lid1.attribute('src', 'assets/rMenu.png'));
+  lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuBottonHovered.png'));
+  lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
 
 }
 
-function game3() {
+function game3() {                                                 //NEW
   removeElements();
   
   image(gImage, 0, 0, windowWidth, windowHeight);
 
-  bg1 = createButton('Normal');
-  bg1.position(windowWidth/2, windowHeight/4 + 100);
-  bg1.mousePressed(gameStart(0));
+  bg1 = createImg('assets/NormalButton.png', '');                  
+  bg1.position(windowWidth/3-125, windowHeight/4-60);
+  bg1.size(285, 120);
+  bg1.mousePressed(() => game1Start(0));
+  bg1.mouseOver(() => bg1.attribute('src', 'assets/NormalButtonHovered.png'));
+  bg1.mouseOut(() => bg1.attribute('src', 'assets/NormalButton.png'));
 
-  bg2 = createButton('Hard');
-  bg2.position(windowWidth/2, windowHeight/4 +125);
-  bg2.mousePressed(gameStart(1));
+  bg2 = createImg('assets/HardButton.png', '');                    
+  bg2.position(windowWidth/3, windowHeight/2-75);
+  bg2.size(285, 120);
+  bg2.mousePressed(() => game1Start(1));
+  bg2.mouseOver(() => bg2.attribute('src', 'assets/HardButtonHovered.png'));
+  bg2.mouseOut(() => bg2.attribute('src', 'assets/HardButton.png'));
 
-  lid1 = createImg('assets/rMenu.png', '');
+  lid1 = createImg('assets/MenuButton.png', '');
 
-  lid1.position(windowWidth/3, windowHeight/4 + 150);
-  lid1.size(windowWidth/2, windowHeight/4);
+  lid1.position(windowWidth/2-247.5, windowHeight-150);
+  lid1.size(495, 120);
   lid1.mousePressed(mainMenu);
-  lid1.mouseOver(() => lid1.attribute('src', 'assets/rMenuHover.png'));
-  lid1.mouseOut(() => lid1.attribute('src', 'assets/rMenu.png'));
+  lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuBottonHovered.png'));
+  lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
 
 
   function gameStart(difficulty){
@@ -206,6 +232,7 @@ function game3() {
     gameIndex = 3;
   }
 }
+
 
 
 class CardMatchingGame {
@@ -332,15 +359,13 @@ class CardMatchingGame {
     text(`Game Over!`, width / 2, height / 2 - 50);
     text(`Attempts: ${this.attempts}`, width / 2, height / 2);
 
-    let returnBtn = createImg('assets/rMenu.png', 'Return to Menu');
-    returnBtn.position(width / 3, height / 2 + 50);
-    returnBtn.size(width / 2, height / 4);
-    returnBtn.mousePressed(() => {
-      returnBtn.remove();
-      mainMenu();
-    });
-    returnBtn.mouseOver(() => returnBtn.attribute('src', 'assets/rMenuHover.png'));
-    returnBtn.mouseOut(() => returnBtn.attribute('src', 'assets/rMenu.png'));
+    lid1 = createImg('assets/MenuButton.png', '');                 
+  lid1.position(windowWidth/2-247.5, windowHeight-150);            
+  lid1.size(495, 120);                                             
+  lid1.mousePressed(mainMenu);                                     
+  lid1.mouseOver(() => lid1.attribute('src', 'assets/  MenuBottonHovered.png'));                                          
+  lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
+                                                                   
   }
 
   handleMousePressed() {
@@ -391,7 +416,9 @@ function game2Start(){
 }
 
 function g2Setup(){
-  bug = createImg('assets/bug1.jpg', '');
+  time = 5;
+  score = 0;
+  bug = createImg('assets/ant.png', '');
   bug.position(random(width), random(height));
   bug.size(30/400 * windowWidth, 30/400 * windowHeight);
   bug.mousePressed(bugPress);
@@ -413,11 +440,10 @@ function bugPress(){
 }
 
 function g2Draw(){
-  
-  // ADD BACKGROUND IMAGE
+  image(game2bg2, 0, 0, windowWidth, windowHeight);
   textSize(20);
-  text("Score: ", 50/400 * windowWidth, 350/400 * windowHeight);
-  text(score, 110/400 * windowWidth, 350/400 * windowHeight)
+  text("Score: ", 50/400 * windowWidth, 50/400 * windowHeight);
+  text(score, 110/400 * windowWidth, 50/400 * windowHeight)
 
   time -= 1 / 60;
   if(time <= 0){
@@ -425,7 +451,13 @@ function g2Draw(){
     textSize(20);
     text("Game over!", 200/400 * windowWidth, 200/400 * windowHeight);
     gameIndex = 0;
-    // add return to menu button
+    lid1 = createImg('assets/MenuButton.png', '');
+
+    lid1.position(windowWidth/2-247.5, windowHeight-150);
+    lid1.size(495, 120);
+    lid1.mousePressed(mainMenu);
+    lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuBottonHovered.png'));
+    lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
   }
   let timer = map(time, 0, 5, 0, 200);
   rect(20/400 * windowWidth, 20/400 * windowHeight, 10, timer);
