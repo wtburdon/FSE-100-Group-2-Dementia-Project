@@ -414,7 +414,7 @@ function bugPress(){
 
 function g2Draw(){
   
-  
+  // ADD BACKGROUND IMAGE
   textSize(20);
   text("Score: ", 50/400 * windowWidth, 350/400 * windowHeight);
   text(score, 110/400 * windowWidth, 350/400 * windowHeight)
