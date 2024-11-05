@@ -24,6 +24,8 @@ let difficulty = 0;
 
 let game2bg2;
 
+let timeTaken = 0;
+
 function preload(){
   backgroundImage = loadImage('assets/output.jpg');
   gImage = loadImage('assets/wallpaper.png');
@@ -367,7 +369,7 @@ class CardMatchingGame {
       }else if(this.timeTaken <= 75){
         gameMessage = "Keep Trying!";
       }else{
-        gameMessage = "Please consider talking to your doctor"
+        gameMessage = "Please consider talking to your doctor";
       }
     }else{
       if(this.timeTaken <= 30){
@@ -379,7 +381,7 @@ class CardMatchingGame {
       }else if(this.timeTaken <= 100){
         gameMessage = "Keep Trying!";
       }else{
-        gameMessage = "Please consider talking to your doctor"
+        gameMessage = "Please consider talking to your doctor";
       }
     }
     
@@ -446,6 +448,9 @@ function game2Start(){
 }
 
 function g2Setup(){
+  
+  timeTaken = 0;
+  
   time = 5;
   score = 0;
   bug = createImg('assets/ant.png', '');
@@ -495,12 +500,44 @@ function g2Draw(){
   textSize(20);
   text("Score: ", 50/400 * windowWidth, 50/400 * windowHeight);
   text(score, 110/400 * windowWidth, 50/400 * windowHeight)
-
+  
+  timeTaken += 1 / 60;
   time -= 1 / 60;
-  if(time <= 0){
+  if(time <= 0 || timeTaken >= 50){
+    removeElements();
+    let gameMessage;
+    
+    if(difficulty == 0){
+      if(timeTaken <= 10){
+        gameMessage = "Please consider talking to your doctor";
+      }else if(timeTaken <= 20){
+        gameMessage = "Keep Trying!";
+      }else if(timeTaken <= 30){
+        gameMessage = "You're on your way there!";
+      }else if(timeTaken <= 40){
+        gameMessage = "You are doing great! Keep it up!";
+      }else{
+        gameMessage = "Congrats! You protected the pie!"; 
+      }
+    }else{
+      if(timeTaken <= 10){
+        gameMessage = "Please consider talking to your doctor";
+      }else if(timeTaken <= 20){
+        gameMessage = "Keep Trying!";
+      }else if(timeTaken <= 30){
+        gameMessage = "You're on your way there!";
+      }else if(timeTaken <= 40){
+        gameMessage = "You are doing great! Keep it up!";
+      }else{
+        gameMessage = "Congrats! You protected the pie!"; 
+      }
+    }
+    
+    
     time = 0;
     textSize(20);
     text("Game over!", 200/400 * windowWidth, 200/400 * windowHeight);
+    text(`${gameMessage}`, 200/400 * windowWidth, 200/400 * windowHeight - 20);
     gameIndex = 0;
     lid1 = createImg('assets/MenuButton.png', '');
 
