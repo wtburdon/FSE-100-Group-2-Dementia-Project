@@ -417,21 +417,43 @@ function g2Setup(){
   bug.position(random(width-20), random(height-20));
   bug.size(30/400 * windowWidth, 30/400 * windowHeight);
   bug.mousePressed(bugPress);
+  
+  if(difficulty == 1){
+    bbug = createImg('assets/butterfly.png', '');
+    bbug.position(random(width-20), random(height-20));
+    bbug.size(40/400 * windowWidth, 40/400 * windowHeight);
+    bbug.mousePressed(bbugPress);
+  }
 }
 
 function bugPress(){
   correctSound.play();
   
-  bug.position(random(width-20), random(height-20));
-  score++;
+  if(difficulty == 0){
+    bug.position(random(width-20), random(height-20));
+    score++;
+  }
+  else if(difficulty == 1){
+    bug.position(random(width-20), random(height-20));
+    bbug.position(random(width-20), random(height-20));
+    score++;
+  }
   if(score > 1){
     if(difficulty == 0){
       time += 1;
     }
-    else{
-      time += 0.5;
+    else if(difficulty == 1){
+      time += 0.75;
     }
   }
+}
+
+function bbugPress(){
+  incorrectSound.play()
+  
+  score--;
+  bug.position(random(width-20), random(height-20));
+  bbug.position(random(width-20), random(height-20));
 }
 
 function g2Draw(){
