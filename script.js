@@ -320,7 +320,7 @@ class CardMatchingGame {
   }
 
   drawCards() {
-    timeTaken += 1/60;
+    this.timeTaken += 1/60;
     
     if (this.gameOver) {
       return; 
@@ -355,8 +355,25 @@ class CardMatchingGame {
     textSize(32);
     fill(0);
     textAlign(CENTER);
-    text(`Game Over!`, width / 2, height / 2 - 50);
-    text(`Attempts: ${this.attempts}`, width / 2, height / 2);
+    
+    let gameMessage;
+    
+    if(this.timeTaken <= 15){
+      gameMessage = "Wow that was fast, great job!";
+    }else if(this.timeTaken <= 30){
+      gameMessage = "You are doing great! Keep it up!";
+    }else if(this.timeTaken <= 50){
+      gameMessage = "You're on your way there!";
+    }else if(this.timeTaken <= 75){
+      gameMessage = "Keep Trying!";
+    }else{
+      gameMessage = "Please consider talking to your doctor"
+    }
+    
+    text(`Game Over!`, width / 2, height / 2 - 150);
+    text(`Attempts: ${this.attempts}`, width / 2, height / 2 - 100);
+    text(`Time Taken: ${this.timeTaken.toFixed(2)} seconds`, width / 2, height / 2 - 50);
+    text(`${gameMessage}`, width / 2, height / 2);
 
     lid1 = createImg('assets/MenuButton.png', '');                 
   lid1.position(windowWidth/2-247.5, windowHeight-150);            
