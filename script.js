@@ -49,8 +49,8 @@ function preload(){
 
   
   
-  correctSound = loadSound('assets/incorrect.mp3');
-  incorrectSound = loadSound('assets/correct.mp3');
+  correctSound = loadSound('assets/correct.mp3');
+  incorrectSound = loadSound('assets/incorrect.mp3');
 
   game1background = loadImage('assets/game1bg.png');
 
@@ -238,7 +238,9 @@ class CardMatchingGame {
     this.selectedCards = [];
     this.matches = 0;
     this.attempts = 0;
-    this.gameOver = false; 
+    this.gameOver = false;
+    
+    this.timeTaken = 0;
 
     this.shapeImages = {};
     this.backImage = loadImage('assets/CardBack.png');
@@ -318,6 +320,8 @@ class CardMatchingGame {
   }
 
   drawCards() {
+    timeTaken += 1/60;
+    
     if (this.gameOver) {
       return; 
     }
@@ -416,13 +420,13 @@ function g2Setup(){
   bug = createImg('assets/ant.png', '');
   bug.position(random(width-20), random(height-20));
   bug.size(30/400 * windowWidth, 30/400 * windowHeight);
-  bug.mousePressed(bugPress);
+  bug.mousePressed(() => bugPress());
   
   if(difficulty == 1){
     bbug = createImg('assets/butterfly.png', '');
     bbug.position(random(width-20), random(height-20));
     bbug.size(40/400 * windowWidth, 40/400 * windowHeight);
-    bbug.mousePressed(bbugPress);
+    bbug.mousePressed(() => bbugPress());
   }
 }
 
@@ -449,8 +453,7 @@ function bugPress(){
 }
 
 function bbugPress(){
-  incorrectSound.play()
-  
+  incorrectSound.play();
   score--;
   bug.position(random(width-20), random(height-20));
   bbug.position(random(width-20), random(height-20));
