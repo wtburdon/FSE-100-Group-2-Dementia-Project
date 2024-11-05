@@ -178,7 +178,7 @@ function game2() {
   bg1 = createImg('assets/NormalButton.png', '');                  
   bg1.position(windowWidth/3-125, windowHeight/4-60);
   bg1.size(285, 120);
-  bg1.mousePressed(() => {difficulty = 1; game2Start();});
+  bg1.mousePressed(() => {difficulty = 0; game2Start();});
   bg1.mouseOver(() => bg1.attribute('src', 'assets/NormalButtonHovered.png'));
   bg1.mouseOut(() => bg1.attribute('src', 'assets/NormalButton.png'));
 
@@ -199,25 +199,25 @@ function game2() {
 
 }
 
-function game3() {                                                 //NEW
+function game3() {
   removeElements();
   
   image(gImage, 0, 0, windowWidth, windowHeight);
-
+  
   bg1 = createImg('assets/NormalButton.png', '');                  
   bg1.position(windowWidth/3-125, windowHeight/4-60);
   bg1.size(285, 120);
-  bg1.mousePressed(() => game1Start(0));
+  bg1.mousePressed(() => {difficulty = 0; game3Start();});
   bg1.mouseOver(() => bg1.attribute('src', 'assets/NormalButtonHovered.png'));
   bg1.mouseOut(() => bg1.attribute('src', 'assets/NormalButton.png'));
 
   bg2 = createImg('assets/HardButton.png', '');                    
   bg2.position(windowWidth/3, windowHeight/2-75);
   bg2.size(285, 120);
-  bg2.mousePressed(() => game1Start(1));
+  bg2.mousePressed(() => {difficulty = 1; game3Start();});
   bg2.mouseOver(() => bg2.attribute('src', 'assets/HardButtonHovered.png'));
   bg2.mouseOut(() => bg2.attribute('src', 'assets/HardButton.png'));
-
+  
   lid1 = createImg('assets/MenuButton.png', '');
 
   lid1.position(windowWidth/2-247.5, windowHeight-150);
@@ -225,12 +225,7 @@ function game3() {                                                 //NEW
   lid1.mousePressed(mainMenu);
   lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuBottonHovered.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
-
-
-  function gameStart(difficulty){
-    //game = new CardMatchingGame(difficulty);
-    gameIndex = 3;
-  }
+  
 }
 
 
@@ -461,4 +456,8 @@ function g2Draw(){
   }
   let timer = map(time, 0, 5, 0, 200);
   rect(20/400 * windowWidth, 20/400 * windowHeight, 10, timer);
+}
+
+function game3Start(){
+  
 }
