@@ -414,7 +414,7 @@ function g2Setup(){
   time = 5;
   score = 0;
   bug = createImg('assets/ant.png', '');
-  bug.position(random(width), random(height));
+  bug.position(random(width-20), random(height-20));
   bug.size(30/400 * windowWidth, 30/400 * windowHeight);
   bug.mousePressed(bugPress);
 }
@@ -422,7 +422,7 @@ function g2Setup(){
 function bugPress(){
   correctSound.play();
   
-  bug.position(random(width), random(height));
+  bug.position(random(width-20), random(height-20));
   score++;
   if(score > 1){
     if(difficulty == 0){
