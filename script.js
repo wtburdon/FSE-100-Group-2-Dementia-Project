@@ -358,7 +358,7 @@ class CardMatchingGame {
   lid1.position(windowWidth/2-247.5, windowHeight-150);            
   lid1.size(495, 120);                                             
   lid1.mousePressed(mainMenu);                                     
-  lid1.mouseOver(() => lid1.attribute('src', 'assets/  MenuBottonHovered.png'));                                          
+  lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuButtonHovered.png'));                                          
   lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
                                                                    
   }
