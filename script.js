@@ -357,18 +357,32 @@ class CardMatchingGame {
     textAlign(CENTER);
     
     let gameMessage;
-    
-    if(this.timeTaken <= 15){
-      gameMessage = "Wow that was fast, great job!";
-    }else if(this.timeTaken <= 30){
-      gameMessage = "You are doing great! Keep it up!";
-    }else if(this.timeTaken <= 50){
-      gameMessage = "You're on your way there!";
-    }else if(this.timeTaken <= 75){
-      gameMessage = "Keep Trying!";
+    if(this.difficulty == 0){
+      if(this.timeTaken <= 15){
+        gameMessage = "Wow that was fast, great job!";
+      }else if(this.timeTaken <= 30){
+        gameMessage = "You are doing great! Keep it up!";
+      }else if(this.timeTaken <= 50){
+        gameMessage = "You're on your way there!";
+      }else if(this.timeTaken <= 75){
+        gameMessage = "Keep Trying!";
+      }else{
+        gameMessage = "Please consider talking to your doctor"
+      }
     }else{
-      gameMessage = "Please consider talking to your doctor"
+      if(this.timeTaken <= 30){
+        gameMessage = "Wow that was fast, great job!";
+      }else if(this.timeTaken <= 60){
+        gameMessage = "You are doing great! Keep it up!";
+      }else if(this.timeTaken <= 80){
+        gameMessage = "You're on your way there!";
+      }else if(this.timeTaken <= 100){
+        gameMessage = "Keep Trying!";
+      }else{
+        gameMessage = "Please consider talking to your doctor"
+      }
     }
+    
     
     text(`Game Over!`, width / 2, height / 2 - 150);
     text(`Attempts: ${this.attempts}`, width / 2, height / 2 - 100);
