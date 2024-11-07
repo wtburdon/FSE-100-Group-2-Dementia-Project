@@ -232,7 +232,17 @@ function game3() {
   
 }
 
+function game1Instructions(){ // Card Match
+  
+}
 
+function game2Instructions(){ // Bug Game
+  
+}
+
+function game3Instructions(){ // Word Game
+  
+}
 
 //Billy
 class CardMatchingGame {
