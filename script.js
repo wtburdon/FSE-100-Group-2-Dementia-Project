@@ -1,5 +1,10 @@
 let bg1, bg2, bg3;
 let backgroundImage;
+let instructionBackground;
+let instructionButton;
+let ant;
+let butterfly;
+let fakeScore;
 
 let gImage;
 let lid1, lid2, lid3;
@@ -31,6 +36,7 @@ function preload(){ //Most images made by Alec
   gImage = loadImage('assets/wallpaper.png');
   pDish = loadImage('assets/pickDish.png');
   game1background = loadImage('assets/game1bg.png');
+  instructionBackground = loadImage('assets/InstructionBackground.png');
   
   backImage = loadImage('assets/CardBack.png');
   
@@ -134,7 +140,7 @@ function homeButtonSetup() {
   homeButton.mouseOut(() => homeButton.attribute('src', 'assets/homeSymbol.png'));
   
 }
-
+//Alec
 function game1() {
   removeElements();
 
@@ -162,6 +168,12 @@ function game1() {
   lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuButtonHovered.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
 
+  instructionButton = createImg('assets/InstructionsButton.png', '');                  
+  instructionButton.position(windowWidth/3-75, windowHeight/2+55);
+  instructionButton.size(285, 120);
+  instructionButton.mousePressed(() => game1Instructions());
+  instructionButton.mouseOver(() => instructionButton.attribute('src', 'assets/InstructionsButtonHovered.png'));
+  instructionButton.mouseOut(() => instructionButton.attribute('src', 'assets/InstructionsButton.png'));
   
 }
 
@@ -173,7 +185,7 @@ function game1Start(difficulty){
   
   gameIndex = 1;
 }
-
+//Alec
 function game2() {
   removeElements();
   
@@ -201,8 +213,16 @@ function game2() {
   lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuButtonHovered.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
 
+  instructionButton = createImg('assets/InstructionsButton.png', '');
+  
+  instructionButton.position(windowWidth/3-75, windowHeight/2+55);
+  instructionButton.size(285, 120);
+  instructionButton.mousePressed(() => game2Instructions());
+  instructionButton.mouseOver(() => instructionButton.attribute('src', 'assets/InstructionsButtonHovered.png'));
+  instructionButton.mouseOut(() => instructionButton.attribute('src', 'assets/InstructionsButton.png'));
+  
 }
-
+//Alec
 function game3() {
   removeElements();
   
@@ -230,17 +250,95 @@ function game3() {
   lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuButtonHovered.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
   
+  instructionButton = createImg('assets/InstructionsButton.png', '');
+  
+  instructionButton.position(windowWidth/3-75, windowHeight/2+55);
+  instructionButton.size(285, 120);
+  instructionButton.mousePressed(() => game3Instructions());
+  instructionButton.mouseOver(() => instructionButton.attribute('src', 'assets/InstructionsButtonHovered.png'));
+  instructionButton.mouseOut(() => instructionButton.attribute('src', 'assets/InstructionsButton.png'));
+  
 }
-
+//Alec
 function game1Instructions(){ // Card Match
   
-}
+  removeElements();
+  image(instructionBackground, 0, 0, windowWidth, windowHeight);
+  
+  bg1 = createImg('assets/BackButton.png', '');
 
-function game2Instructions(){ // Bug Game
+  bg1.position(windowWidth/2-142.5, windowHeight-150);
+  bg1.size(285, 120);
+  bg1.mousePressed(game1);
+  bg1.mouseOver(() => bg1.attribute('src', 'assets/BackButtonHovered.png'));
+  bg1.mouseOut(() => bg1.attribute('src', 'assets/BackButton.png'));
   
 }
+//Alec
+function game2Instructions(){ // Bug Game
+  
+  removeElements();
+  image(instructionBackground, 0, 0, windowWidth, windowHeight);
+  fakeScore = 0;
+  
+  bg1 = createImg('assets/BackButton.png', '');
 
+  bg1.position(windowWidth/2-142.5, windowHeight-150);
+  bg1.size(285, 120);
+  bg1.mousePressed(game2);
+  bg1.mouseOver(() => bg1.attribute('src', 'assets/BackButtonHovered.png'));
+  bg1.mouseOut(() => bg1.attribute('src', 'assets/BackButton.png'));
+  
+  rect(450,275, 60, 30);
+  textSize(32);
+  fill('rgb(202,121,255)');
+  stroke(0);
+  text('Score:', 350, 300);
+  text(fakeScore, 455, 300);
+  
+  
+  ant = createImg('assets/ant.png', '');
+  ant.position(75, 75);
+  ant.size(150, 150);
+  ant.mousePressed(() => {
+    correctSound.play();
+    fakeScore ++;
+    fill('white');
+    rect(450,275, 60, 30);
+    textSize(32);
+    fill('rgb(202,121,255)');
+    stroke(0);
+    text(fakeScore, 455, 300);
+  });
+  
+  butterfly = createImg('assets/butterfly.png', '');
+  butterfly.position(75, 375);
+  butterfly.size(150, 150);
+  butterfly.mousePressed(() => {
+    incorrectSound.play();
+    fakeScore --;
+    fill('white');
+    rect(450,275, 60, 30);
+    textSize(32);
+    fill('rgb(202,121,255)');
+    stroke(0);
+    text(fakeScore, 455, 300);
+  });
+  
+}
+//Alec
 function game3Instructions(){ // Word Game
+  
+  removeElements();
+  image(instructionBackground, 0, 0, windowWidth, windowHeight);
+  
+  bg1 = createImg('assets/BackButton.png', '');
+
+  bg1.position(windowWidth/2-142.5, windowHeight-150);
+  bg1.size(285, 120);
+  bg1.mousePressed(game3);
+  bg1.mouseOver(() => bg1.attribute('src', 'assets/BackButtonHovered.png'));
+  bg1.mouseOut(() => bg1.attribute('src', 'assets/BackButton.png'));
   
 }
 
