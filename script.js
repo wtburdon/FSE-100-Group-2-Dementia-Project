@@ -26,7 +26,7 @@ let game2bg2;
 
 let timeTaken = 0;
 
-function preload(){
+function preload(){ //Most images made by Alec
   backgroundImage = loadImage('assets/output.jpg');
   gImage = loadImage('assets/wallpaper.png');
   pDish = loadImage('assets/pickDish.png');
@@ -122,6 +122,7 @@ function mainMenu() {
   lid3.mouseOut(() => lid3.attribute('src', 'assets/closedlid.png'));
 }
 
+//Alec
 function homeButtonSetup() {
   
   homeButton = createImg('assets/homeSymbol.png', '');
@@ -230,6 +231,8 @@ function game3() {
   lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
   
 }
+
+
 
 //Billy
 class CardMatchingGame {
@@ -439,14 +442,14 @@ class CardMatchingGame {
   }
 }
 
-
+//Erim
 function game2Start(){
   removeElements();
   
   g2Setup()
   gameIndex = 2
 }
-
+//Erim
 function g2Setup(){
   
   timeTaken = 0;
@@ -465,7 +468,7 @@ function g2Setup(){
     bbug.mousePressed(() => bbugPress());
   }
 }
-
+//Erim
 function bugPress(){
   correctSound.play();
   
@@ -487,14 +490,14 @@ function bugPress(){
     }
   }
 }
-
+//Erim
 function bbugPress(){
   incorrectSound.play();
   score--;
   bug.position(random(width-20), random(height-20));
   bbug.position(random(width-20), random(height-20));
 }
-
+//Erim
 function g2Draw(){
   image(game2bg2, 0, 0, windowWidth, windowHeight);
   textSize(20);
