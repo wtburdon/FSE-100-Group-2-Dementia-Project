@@ -75,9 +75,9 @@ function draw() {
     
   }else if(gameIndex == 1){ // Card Match Game
     game.drawCards();
-  }else if(gameIndex == 2){
+  }else if(gameIndex == 2){ // Ant Game
     g2Draw();
-  }else if(gameIndex == 3){
+  }else if(gameIndex == 3){ // Word Game
 
   }
   
@@ -89,6 +89,7 @@ function mousePressed(){
   }
 }
 
+//Billy
 function mainMenu() {
   removeElements();
   gameIndex = 0;
@@ -231,7 +232,7 @@ function game3() {
 }
 
 
-
+// Billy
 class CardMatchingGame {
   constructor(difficulty) {
     this.difficulty = difficulty; 
