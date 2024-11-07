@@ -75,9 +75,9 @@ function draw() {
     
   }else if(gameIndex == 1){ // Card Match Game
     game.drawCards();
-  }else if(gameIndex == 2){ // Ant Game
+  }else if(gameIndex == 2){
     g2Draw();
-  }else if(gameIndex == 3){ // Word Game
+  }else if(gameIndex == 3){
 
   }
   
@@ -158,7 +158,7 @@ function game1() {
   lid1.position(windowWidth/2-247.5, windowHeight-150);
   lid1.size(495, 120);
   lid1.mousePressed(mainMenu);
-  lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuBottonHovered.png'));
+  lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuButtonHovered.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
 
   
@@ -197,7 +197,7 @@ function game2() {
   lid1.position(windowWidth/2-247.5, windowHeight-150);
   lid1.size(495, 120);
   lid1.mousePressed(mainMenu);
-  lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuBottonHovered.png'));
+  lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuButtonHovered.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
 
 }
@@ -226,13 +226,12 @@ function game3() {
   lid1.position(windowWidth/2-247.5, windowHeight-150);
   lid1.size(495, 120);
   lid1.mousePressed(mainMenu);
-  lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuBottonHovered.png'));
+  lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuButtonHovered.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
   
 }
 
-
-// Billy
+//Billy
 class CardMatchingGame {
   constructor(difficulty) {
     this.difficulty = difficulty; 
@@ -545,7 +544,7 @@ function g2Draw(){
     lid1.position(windowWidth/2-247.5, windowHeight-150);
     lid1.size(495, 120);
     lid1.mousePressed(mainMenu);
-    lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuBottonHovered.png'));
+    lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuButtonHovered.png'));
     lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
   }
   let timer = map(time, 0, 5, 0, 200);
