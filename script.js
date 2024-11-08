@@ -31,6 +31,12 @@ let game2bg2;
 
 let timeTaken = 0;
 
+let cupbg;
+let arr = ['flour', 'sugar', 'butter', 'eggs', 'salt', 'yeast', 'milk', 'vanilla', 'chocolate', 'baking powder', 'baking soda', 'cinnamon', 'honey', 'cream', 'icing', 'almonds', 'walnuts', 'pecans', 'oats', 'raisins', 'blueberries', 'strawberries', 'raspberries', 'cherries', 'whipped cream', 'pastry cream', 'custard', 'jam', 'maple syrup', 'molasses', 'bread', 'croissants', 'muffins', 'cookies', 'brownies', 'cakes', 'cupcakes', 'donuts', 'eclairs', 'tarts', 'macarons', 'scones', 'danishes', 'bagels', 'pretzels', 'frosting', 'ganache', 'pie crust', 'shortbread', 'ladyfingers', 'madeleines'];
+let seen = [];
+let choice;
+let lives;
+
 function preload(){ //Most images made by Alec
   backgroundImage = loadImage('assets/output.jpg');
   gImage = loadImage('assets/wallpaper.png');
@@ -66,6 +72,10 @@ function preload(){ //Most images made by Alec
   
   game2bg2 = loadImage('assets/game2bg.png');
   
+  neww = loadImage('assets/NewWord.png')
+  oldw = loadImage('assets/OldWord.png')
+  cupbg = loadImage('assets/game3bg.png')
+  
 }
 
 
@@ -84,7 +94,7 @@ function draw() {
   }else if(gameIndex == 2){
     g2Draw();
   }else if(gameIndex == 3){
-
+    game3Draw();
   }
   
 }
@@ -554,8 +564,8 @@ class CardMatchingGame {
 function game2Start(){
   removeElements();
   
-  g2Setup()
-  gameIndex = 2
+  g2Setup();
+  gameIndex = 2;
 }
 //Erim
 function g2Setup(){
@@ -663,5 +673,142 @@ function g2Draw(){
 }
 
 function game3Start(){
+  removeElements();
+  
+  if(difficulty==0){
+    lives = 5;
+  }else{
+    lives = 3;
+  }
+  
+  game3Setup();
+  gameIndex = 3;
+}
+
+//Tara
+function game3Setup(){
+  
+  background(220);
+  
+  image(cupbg, 0, 0, windowWidth, windowHeight);
+  
+  textSize(30);
+  fill(30);
+  text("Score:", 40, 100);
+  text(score, 140, 100);
+  
+  text("Lives:", 40, 130);
+  text(lives, 140, 130);
+  
+  
+  let neww = createImg('assets/NewWord.png', '');
+  neww.size(200, 200);
+  neww.position(windowWidth/10, windowHeight/2);
+  neww.mousePressed(handleNewWordPressed);
+  neww.mouseOver(() => neww.attribute('src', 'assets/NewWordHovered.png'));
+  neww.mouseOut(() => neww.attribute('src', 'assets/NewWord.png'));
+  
+  
+  let oldw = createImg('assets/OldWord.png', '');
+  oldw.size(200, 200);
+  oldw.position(6*windowWidth/10, windowHeight/2);
+  oldw.mousePressed(handleOldWordPressed);
+  oldw.mouseOver(() => oldw.attribute('src', 'assets/OldWordHovered.png'));
+  oldw.mouseOut(() => oldw.attribute('src', 'assets/OldWord.png'));
+  
+  timer = map(time, 0, 5, 0, 200);
+  
+  word();
+}
+
+function game3Draw(){
+  if(lives <= 0){
+    removeElements();
+    let gameMessage;
+    
+    
+    if(score <= 10){
+      gameMessage = "Please consider talking to your doctor";
+    }else if(score <= 15){
+      gameMessage = "Keep Trying!";
+    }else if(score <= 20){
+      gameMessage = "You're on your way there!";
+    }else if(score <= 25){
+      gameMessage = "You are doing great! Keep it up!";
+    }else{
+      gameMessage = "You mastered the recipe!"; 
+    }
+    
+    textSize(20);
+    text("Game over!", 200/400 * windowWidth, 200/400 * windowHeight);
+    text(`${gameMessage}`, 200/400 * windowWidth, 200/400 * windowHeight - 20);
+    gameIndex = 0;
+    lid1 = createImg('assets/MenuButton.png', '');
+
+    lid1.position(windowWidth/2-247.5, windowHeight-150);
+    lid1.size(495, 120);
+    lid1.mousePressed(mainMenu);
+    lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuButtonHovered.png'));
+    lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
+  }
+  
+}
+
+//Tara
+function word() {
+  choice = random(arr);
+  fill(30);
+  textSize(25);
+  text(choice, windowWidth/2, 180);
+}
+
+//Tara
+function handleNewWordPressed(){
+  if(checkIfNew() == true){
+    correctSound.play();
+    score++;
+  }else{
+    incorrectSound.play();
+    lives--;
+  }
+  removeElements();
+  game3Setup();
+  time = 5;
+}
+//Tara
+function handleOldWordPressed(){
+  if(checkIfOld() == true){
+    correctSound.play();
+    score++;
+    console.log(score);
+  }else{
+    incorrectSound.play();
+    lives--;
+  }
+  removeElements();
+  game3Setup();
+  time = 5;
+}
+
+//Tara
+function checkIfOld(){
+  for(const w of seen){
+    if(w == choice){
+      return true;
+    }
+  }
+  seen.push(choice);
+  return false;
+}
+
+//Tara
+function checkIfNew(){
+  for(const w of seen){
+    if(w == choice){
+      return false;
+    }
+  }
+  seen.push(choice);
+  return true;
   
 }
