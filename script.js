@@ -178,12 +178,12 @@ function game1() {
   lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuButtonHovered.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
 
-  instructionButton = createImg('assets/InstructionsButton.png', '');                  
+  /*instructionButton = createImg('assets/InstructionsButton.png', '');                  
   instructionButton.position(windowWidth/3-75, windowHeight/2+55);
   instructionButton.size(285, 120);
   instructionButton.mousePressed(() => game1Instructions());
   instructionButton.mouseOver(() => instructionButton.attribute('src', 'assets/InstructionsButtonHovered.png'));
-  instructionButton.mouseOut(() => instructionButton.attribute('src', 'assets/InstructionsButton.png'));
+  instructionButton.mouseOut(() => instructionButton.attribute('src', 'assets/InstructionsButton.png')); */
   
 }
 
@@ -260,13 +260,13 @@ function game3() {
   lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuButtonHovered.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
   
-  instructionButton = createImg('assets/InstructionsButton.png', '');
+  /*instructionButton = createImg('assets/InstructionsButton.png', '');
   
   instructionButton.position(windowWidth/3-75, windowHeight/2+55);
   instructionButton.size(285, 120);
   instructionButton.mousePressed(() => game3Instructions());
   instructionButton.mouseOver(() => instructionButton.attribute('src', 'assets/InstructionsButtonHovered.png'));
-  instructionButton.mouseOut(() => instructionButton.attribute('src', 'assets/InstructionsButton.png'));
+  instructionButton.mouseOut(() => instructionButton.attribute('src', 'assets/InstructionsButton.png')); */
   
 }
 //Alec
@@ -306,6 +306,8 @@ function game2Instructions(){ // Bug Game
   text('Score:', 350, 300);
   text(fakeScore, 455, 300);
   
+  text('Click on the ants to protect the pie!', 200, 100);
+  text('Clicking on butterflies \nlowers your score!', 235, 400);
   
   ant = createImg('assets/ant.png', '');
   ant.position(75, 75);
@@ -563,6 +565,7 @@ class CardMatchingGame {
 //Erim
 function game2Start(){
   removeElements();
+  homeButtonSetup();
   
   g2Setup();
   gameIndex = 2;
@@ -674,6 +677,7 @@ function g2Draw(){
 
 function game3Start(){
   removeElements();
+  homeButtonSetup();
   
   if(difficulty==0){
     lives = 5;
