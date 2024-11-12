@@ -680,7 +680,7 @@ function game3Start(){
   }else{
     lives = 3;
   }
-  
+  score = 0;
   game3Setup();
   gameIndex = 3;
 }
