@@ -32,7 +32,7 @@ let game2bg2;
 let timeTaken = 0;
 
 let cupbg;
-let arr = ['flour', 'sugar', 'butter', 'eggs', 'salt', 'yeast', 'milk', 'vanilla', 'chocolate', 'baking powder', 'baking soda', 'cinnamon', 'honey', 'cream', 'icing', 'almonds', 'walnuts', 'pecans', 'oats', 'raisins', 'blueberries', 'strawberries', 'raspberries', 'cherries', 'whipped cream', 'pastry cream', 'custard', 'jam', 'maple syrup', 'molasses', 'bread', 'croissants', 'muffins', 'cookies', 'brownies', 'cakes', 'cupcakes', 'donuts', 'eclairs', 'tarts', 'macarons', 'scones', 'danishes', 'bagels', 'pretzels', 'frosting', 'ganache', 'pie crust', 'shortbread', 'ladyfingers', 'madeleines'];
+let arr = ['Flour', 'Sugar', 'Butter', 'Eggs', 'Salt', 'Yeast', 'Milk', 'Vanilla', 'Chocolate', 'Baking Powder', 'Baking Soda', 'Cinnamon', 'Honey', 'Cream', 'Icing', 'Almonds', 'Walnuts', 'Pecans', 'Oats', 'Raisins', 'Blueberries', 'Strawberries', 'Raspberries', 'Cherries', 'Whipped Cream', 'Pastry Cream', 'Custard', 'Jam', 'Maple Syrup', 'Molasses', 'Bread', 'Croissants', 'Muffins', 'Cookies', 'Brownies', 'Cakes', 'Cupcakes', 'Donuts', 'Eclairs', 'Tarts', 'Macarons', 'Scones', 'Danishes', 'Bagels', 'Pretzels', 'Frosting', 'Ganache', 'Pie Crust', 'Shortbread', 'Ladyfingers', 'Madeleines'];
 let seen = [];
 let choice;
 let lives;
@@ -75,6 +75,7 @@ function preload(){ //Most images made by Alec
   neww = loadImage('assets/NewWord.png')
   oldw = loadImage('assets/OldWord.png')
   cupbg = loadImage('assets/game3bg.png')
+   
   
 }
 
@@ -627,30 +628,32 @@ function g2Draw(){
   
   timeTaken += 1 / 60;
   time -= 1 / 60;
-  if(time <= 0 || timeTaken >= 50){
+  
+  
+  if(time <= 0 || timeTaken >= 30){
     removeElements();
     let gameMessage;
     
     if(difficulty == 0){
-      if(timeTaken <= 10){
+      if(score <= 5){
         gameMessage = "Please consider talking to your doctor";
-      }else if(timeTaken <= 20){
+      }else if(score <= 10){
         gameMessage = "Keep Trying!";
-      }else if(timeTaken <= 30){
+      }else if(score <= 15){
         gameMessage = "You're on your way there!";
-      }else if(timeTaken <= 40){
+      }else if(score <= 25){
         gameMessage = "You are doing great! Keep it up!";
       }else{
         gameMessage = "Congrats! You protected the pie!"; 
       }
     }else{
-      if(timeTaken <= 10){
+      if(score <= 3){
         gameMessage = "Please consider talking to your doctor";
-      }else if(timeTaken <= 20){
+      }else if(score <= 5){
         gameMessage = "Keep Trying!";
-      }else if(timeTaken <= 30){
+      }else if(score <= 10){
         gameMessage = "You're on your way there!";
-      }else if(timeTaken <= 40){
+      }else if(score <= 20){
         gameMessage = "You are doing great! Keep it up!";
       }else{
         gameMessage = "Congrats! You protected the pie!"; 
