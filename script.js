@@ -742,7 +742,7 @@ function g2Draw(){
 
 function game3Start(){
   removeElements();
-  homeButtonSetup();
+ 
   
   if(difficulty==0){
     lives = 5;
@@ -756,7 +756,7 @@ function game3Start(){
 
 //Tara
 function game3Setup(){
-  
+  homeButtonSetup();
   background(220);
   
   image(cupbg, 0, 0, windowWidth, windowHeight);
@@ -835,7 +835,7 @@ function word() {
   i = random([cp1, cp2, cp3, cp4])
   
   image(i, windowWidth/2 - 60, 80, 200, 200);
-  text(choice, windowWidth/2, 180);
+  text(choice, windowWidth/2, 250);
 }
 
 //Tara
