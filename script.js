@@ -583,12 +583,24 @@ function g2Setup(){
   bug.size(30/400 * windowWidth, 30/400 * windowHeight);
   bug.mousePressed(() => bugPress());
   
+ 
+  bbug = createImg('assets/butterfly.png', '');
+  bbug.position(random(width-20), random(height-20));
+  bbug.size(40/400 * windowWidth, 40/400 * windowHeight);
+  bbug.mousePressed(() => bbugPress());
+  
   if(difficulty == 1){
-    bbug = createImg('assets/butterfly.png', '');
-    bbug.position(random(width-20), random(height-20));
-    bbug.size(40/400 * windowWidth, 40/400 * windowHeight);
-    bbug.mousePressed(() => bbugPress());
+    bbug2 = createImg('assets/butterfly.png', '');
+    bbug2.position(random(width-20), random(height-20));
+    bbug2.size(40/400 * windowWidth, 40/400 * windowHeight);
+    bbug2.mousePressed(() => bbugPress());
+    
+    bbug3 = createImg('assets/butterfly.png', '');
+    bbug3.position(random(width-20), random(height-20));
+    bbug3.size(40/400 * windowWidth, 40/400 * windowHeight);
+    bbug3.mousePressed(() => bbugPress());
   }
+  
 }
 //Erim
 function bugPress(){
@@ -596,11 +608,15 @@ function bugPress(){
   
   if(difficulty == 0){
     bug.position(random(width-20), random(height-20));
+    bbug.position(random(width-20), random(height-20));
     score++;
   }
   else if(difficulty == 1){
+    //tint(random(255), random(100,200), random(100), random(200,255));
     bug.position(random(width-20), random(height-20));
     bbug.position(random(width-20), random(height-20));
+    bbug2.position(random(width-20), random(height-20));
+    bbug3.position(random(width-20), random(height-20));
     score++;
   }
   if(score > 1){
@@ -618,6 +634,11 @@ function bbugPress(){
   score--;
   bug.position(random(width-20), random(height-20));
   bbug.position(random(width-20), random(height-20));
+  
+  if(difficulty==1){
+    bbug2.position(random(width-20), random(height-20));
+    bbug3.position(random(width-20), random(height-20));
+  }
 }
 //Erim
 function g2Draw(){
@@ -659,7 +680,6 @@ function g2Draw(){
         gameMessage = "Congrats! You protected the pie!"; 
       }
     }
-    
     
     time = 0;
     textSize(20);
