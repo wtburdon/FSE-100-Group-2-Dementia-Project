@@ -42,6 +42,10 @@ let cp2;
 let cp3;
 let cp4;
 
+let tool;
+let tool2;
+let tool3;
+
 function preload(){ //Most images made by Alec
   backgroundImage = loadImage('assets/output.jpg');
   gImage = loadImage('assets/wallpaper.png');
@@ -81,7 +85,7 @@ function preload(){ //Most images made by Alec
   oldw = loadImage('assets/OldWord.png')
   cupbg = loadImage('assets/game3bg.png')
   
-  //['assets/Cupcake1', 'assets/Cupcake2', 'assets/Cupcake3', 'assets/Cupcake4']
+  
   
   cp1 = loadImage('assets/Cupcake1.png');
   cp2 = loadImage('assets/Cupcake2.png');
@@ -272,13 +276,13 @@ function game3() {
   lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuButtonHovered.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
   
-  /*instructionButton = createImg('assets/InstructionsButton.png', '');
+  instructionButton = createImg('assets/InstructionsButton.png', '');
   
   instructionButton.position(windowWidth/3-75, windowHeight/2+55);
   instructionButton.size(285, 120);
   instructionButton.mousePressed(() => game3Instructions());
   instructionButton.mouseOver(() => instructionButton.attribute('src', 'assets/InstructionsButtonHovered.png'));
-  instructionButton.mouseOut(() => instructionButton.attribute('src', 'assets/InstructionsButton.png')); */
+  instructionButton.mouseOut(() => instructionButton.attribute('src', 'assets/InstructionsButton.png'));
   
 }
 //Alec
@@ -357,10 +361,10 @@ function game2Instructions(){ // Bug Game
 }
 //Alec
 function game3Instructions(){ // Word Game
-  
+ 
   removeElements();
   image(instructionBackground, 0, 0, windowWidth, windowHeight);
-  
+ 
   bg1 = createImg('assets/BackButton.png', '');
 
   bg1.position(windowWidth/2-142.5, windowHeight-150);
@@ -368,7 +372,29 @@ function game3Instructions(){ // Word Game
   bg1.mousePressed(game3);
   bg1.mouseOver(() => bg1.attribute('src', 'assets/BackButtonHovered.png'));
   bg1.mouseOut(() => bg1.attribute('src', 'assets/BackButton.png'));
-  
+ 
+  ant = createImg('assets/Cupcake3.png', '');
+  ant.position(windowWidth/2-100, 100);
+  ant.size(200, 200);
+ 
+  tool = createImg('assets/Chocolate.png', '');
+  tool.position(windowWidth/2-55, 240);
+  tool.size(118, 27);
+ 
+  tool2 = createImg('assets/NewWord.png', '');
+  tool2.size(200, 200);
+  tool2.position(windowWidth/10+75, windowHeight/2-50);
+ 
+  tool3 = createImg('assets/OldWord.png', '');
+  tool3.size(200, 200);
+  tool3.position(6*windowWidth/10-75, windowHeight/2-50);
+ 
+  textSize(32);
+  fill('rgb(202,121,255)');
+  stroke(0);
+  text('New words will appear in the cupcake.', 70, 500);
+  text('Try to remember if the word is new or not', 65, 550);
+ 
 }
 
 //Billy
