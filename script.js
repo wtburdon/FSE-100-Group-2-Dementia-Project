@@ -37,6 +37,11 @@ let seen = [];
 let choice;
 let lives;
 
+let cp1;
+let cp2;
+let cp3;
+let cp4;
+
 function preload(){ //Most images made by Alec
   backgroundImage = loadImage('assets/output.jpg');
   gImage = loadImage('assets/wallpaper.png');
@@ -75,7 +80,13 @@ function preload(){ //Most images made by Alec
   neww = loadImage('assets/NewWord.png')
   oldw = loadImage('assets/OldWord.png')
   cupbg = loadImage('assets/game3bg.png')
-   
+  
+  //['assets/Cupcake1', 'assets/Cupcake2', 'assets/Cupcake3', 'assets/Cupcake4']
+  
+  cp1 = loadImage('assets/Cupcake1.png');
+  cp2 = loadImage('assets/Cupcake2.png');
+  cp3 = loadImage('assets/Cupcake3.png');
+  cp4 = loadImage('assets/Cupcake4.png');
   
 }
 
@@ -179,12 +190,12 @@ function game1() {
   lid1.mouseOver(() => lid1.attribute('src', 'assets/MenuButtonHovered.png'));
   lid1.mouseOut(() => lid1.attribute('src', 'assets/MenuButton.png'));
 
-  /*instructionButton = createImg('assets/InstructionsButton.png', '');                  
+  instructionButton = createImg('assets/InstructionsButton.png', '');                  
   instructionButton.position(windowWidth/3-75, windowHeight/2+55);
   instructionButton.size(285, 120);
   instructionButton.mousePressed(() => game1Instructions());
   instructionButton.mouseOver(() => instructionButton.attribute('src', 'assets/InstructionsButtonHovered.png'));
-  instructionButton.mouseOut(() => instructionButton.attribute('src', 'assets/InstructionsButton.png')); */
+  instructionButton.mouseOut(() => instructionButton.attribute('src', 'assets/InstructionsButton.png'));
   
 }
 
@@ -284,6 +295,11 @@ function game1Instructions(){ // Card Match
   bg1.mouseOver(() => bg1.attribute('src', 'assets/BackButtonHovered.png'));
   bg1.mouseOut(() => bg1.attribute('src', 'assets/BackButton.png'));
   
+  textSize(20);
+  text('Flip over two cards, and if they match they will stay up.', 200, 200);
+  text('If not, they will flip back other', 200, 300);
+  
+  textSize(20);
 }
 //Alec
 function game2Instructions(){ // Bug Game
@@ -766,9 +782,12 @@ function game3Draw(){
       gameMessage = "You mastered the recipe!"; 
     }
     
-    textSize(20);
+    fill('black');
+    textSize(30);
     text("Game over!", 200/400 * windowWidth, 200/400 * windowHeight);
     text(`${gameMessage}`, 200/400 * windowWidth, 200/400 * windowHeight - 20);
+    textSize(20);
+    fill('black');
     gameIndex = 0;
     lid1 = createImg('assets/MenuButton.png', '');
 
@@ -786,6 +805,10 @@ function word() {
   choice = random(arr);
   fill(30);
   textSize(25);
+  
+  i = random([cp1, cp2, cp3, cp4])
+  
+  image(i, windowWidth/2 - 60, 80, 200, 200);
   text(choice, windowWidth/2, 180);
 }
 
